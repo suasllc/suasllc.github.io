@@ -2075,7 +2075,7 @@ button,
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  border-bottom: solid 5px #f56a6a;
+  /* border-bottom: solid 5px #f56a6a; */
   padding: 6em 0 1em 0;
   position: relative; }
   #header > * {
@@ -2088,7 +2088,7 @@ button,
     border-bottom: 0;
     color: inherit;
     font-family: "Roboto Slab", serif;
-    font-size: 1.125em; }
+    font-size: 2.125em; }
   #header .icons {
     text-align: right; }
   @media screen and (max-width: 1680px) {
@@ -2107,6 +2107,62 @@ button,
         right: -0.5em;
         top: 0; } }
 
+.profile-pic-div{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-top: 50px;
+}
+.profile-pic-container{
+	width: 400px;
+	height: 550px;
+	background-color: #EBF2F2;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: -11.31px 11.31px 17px 0px rgba(138,131,124,0.23);;
+	/* border-radius: 10px; */
+}
+.name-and-title-div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.profile-name-div h1{
+    line-height: 1.2em;
+    text-align: center;
+    font-size: 35px;
+		color: #2E3C40;
+		font-weight: bolder;
+}
+.profile-name-title{
+    line-height: 1.2em;
+    text-align: center;
+    font-size: 17px;
+		/* color: darkgray; */
+		/* color: #2E3C40; */
+		/* font-weight: bolder; */
+}
+.hr-short{
+	border-top: 3px solid #0F5FA6;
+	width: 50px;
+}
+.profile-social-link-div{
+	background-color: white;
+	height: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.social-icon-div{
+	width: 30px;
+	height: auto;
+	object-fit: contain;
+}
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
