@@ -2153,6 +2153,15 @@ button,
   margin: auto 5px;
 }
 
+.description-p{
+  margin-top: -15px;
+}
+.equal-width{
+  width: 120px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
