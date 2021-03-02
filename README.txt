@@ -1,3 +1,8 @@
+My Personal Website https://tonyngo.me
+
+This project uses the following template as a starter. I have customized it using my own CSS3/HTML5 skills to make it fit my own portfolio website.
+
+
 Editorial by HTML5 UP
 html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
