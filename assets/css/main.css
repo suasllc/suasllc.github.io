@@ -2175,6 +2175,19 @@ button,
   justify-content: center;
 }
 
+.pdf_icon{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.download_a{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto 30px;
+}
+
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
