@@ -2053,7 +2053,7 @@ button,
   display: -ms-flex;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   justify-content: space-between;
   /* border-bottom: solid 5px #0F5FA6; */
   padding: 6em 0 1em 0;
@@ -2068,7 +2068,8 @@ button,
     /* border-bottom: 0; */
     color: inherit;
     font-family: "Roboto Slab", serif;
-    font-size: 26px; 
+    font-size: 22px; 
+    margin-top: -10px;
   }
   /* #header .icons {
     text-align: right; } */
@@ -2096,7 +2097,7 @@ button,
 	margin-top: 50px;
 }
 .profile-pic-container{
-	width: 400px;
+	width: 380px;
 	height: 510px;
 	background-color: #EBF2F2;
 	display: flex;
