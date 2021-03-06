@@ -2083,7 +2083,7 @@ button,
         margin: 0; }
       #header .icons {
         height: 3em;
-        line-height: 3em;
+        line-height: 1.5em;
         position: absolute;
         right: -0.5em;
         top: 0; } }
