@@ -13,15 +13,12 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<script>
 		document.addEventListener('DOMContentLoaded', (event) => {
-			console.log('DOM fully loaded and parsed');
 			const more_skills = document.getElementById('more_skills');
 			const skills_div = document.getElementById('skills_div');
 			const back_to_top_buttons = document.querySelectorAll('.back_to_top_button');
-			console.log('back_to_top_buttons', back_to_top_buttons);
 			let more_skills_expanded = false;
-			more_skills.addEventListener('click', e => {
-				more_skills_expanded = !more_skills_expanded;
-				console.log('more_skills_expanded', more_skills_expanded);
+
+			let handleExpandCollapse = () => {
 				if (more_skills_expanded) {
 					skills_div.classList.add('expanded');
 					more_skills.classList.add('up');
@@ -31,11 +28,32 @@
 					more_skills.classList.add('down');
 					more_skills.classList.remove('up');
 				}
+			};
+
+			more_skills.addEventListener('click', e => {
+				more_skills_expanded = !more_skills_expanded;
+				handleExpandCollapse();
+			});
+			skills_div.addEventListener('click', e => {
+				more_skills_expanded = !more_skills_expanded;
+				handleExpandCollapse();
+			});
+			skills_div.addEventListener('mouseover', e => {
+				if (!more_skills_expanded) {
+					more_skills_expanded = true;
+					handleExpandCollapse();
+				}
+			});
+			skills_div.addEventListener('mouseleave', e => {
+				if (more_skills_expanded) {
+					more_skills_expanded = false;
+					handleExpandCollapse();
+				}
 			});
 			back_to_top_buttons.forEach(btt => {
 				btt.addEventListener('click', e => {
 					// window.scrollTo(0, 0);
-					window.location.href="/#";
+					window.location.href = "/#";
 				});
 			});
 		});
@@ -100,17 +118,19 @@
 						<header>
 							<h2 style="margin-top: -0.5em;">Hi, I'm Tony!</h2>
 						</header>
-						<p style="margin-top: -10px;">I am an experienced Full-stack Software Engineer with a track record 
-							of developing dynamic web application with a sleek interface that elevates user experience 
+						<p style="margin-top: -10px;">I am an experienced Full-stack Software Engineer with a track record
+							of developing dynamic web application with a sleek interface that elevates user experience
 							and an optimized backend that reduces load time and increases performance.
-							<p style="margin-top: -10px;"></p>I have deep
-							knowledge of object oriented programming and high-level programming languages. I am highly proficient in web technologies, 
-							Cloud Database, and relational database schema design. I execute well with a high degree of individual ownership and excel in a team environment.
-							<br />
-							<br />
-							<b>Notable skills</b>: React/Redux, JavaScript/NodeJS, ExpressJS, Python, Flask, PostgreSQL,
-							C++, Java, Android App Dev, Raspberry Pi, Arduino, QtCreator, CSS3, HTML5. <a href="#skills">Full list
-								below</a>.
+						<p style="margin-top: -10px;"></p>I have deep
+						knowledge of object oriented programming and high-level programming languages. I am highly proficient in web
+						technologies,
+						Cloud Database, and relational database schema design. I execute well with a high degree of individual
+						ownership and excel in a team environment.
+						<br />
+						<br />
+						<b>Notable skills</b>: React/Redux, JavaScript/NodeJS, ExpressJS, Python, Flask, PostgreSQL,
+						C++, Java, Android App Dev, Raspberry Pi, Arduino, QtCreator, CSS3, HTML5. <a href="#skills">Full list
+							below</a>.
 						</p>
 						<ul class="actions">
 							<li><a href="#portfolio" class="button big">PORTFOLIO</a></li>
@@ -152,16 +172,15 @@
 							<a href="https://dronest.herokuapp.com" target="_blank" class="image"><img src="images/dronest.gif"
 									alt="" /></a>
 							<h3>Dronest</h3>
-							<p>Inspired by Instagram & Skypixel, Dronest is a social media platform where drone enthusiasts socialize while 
-								sharing aerial photos/videos. It is a multi-function app consisting of a frontend built with React, Redux, JavaScript, etc.
-								and a multi-server Backend constructed using Python, Flask, PostgreSQL, Websocket, etc. 
-								
-								
-								It creates an immersive environment with all features needed for users have a real-world experience of a social platform.
-								They can see new post feed from the users they follow, or like, save and share them; have dedicated profile page 
-								to manage their own posts and 
-								
-
+							<p>Inspired by Instagram & Skypixel, Dronest is a social media platform where drone enthusiasts socialize
+								while
+								sharing aerial photos/videos. It is a multi-function app consisting of 1) a dynamic, smooth and sleek
+								frontend built with
+								React, Redux, JavaScript, etc. and 2) a multi-server Backend constructed using Python, PostgreSQL,
+								Websocket, etc.
+								It creates an immersive environment with all convenient features needed for users have a real-world
+								experience
+								of a social platform. The app is hosted live on Heroku and deployed via Docker Container.
 							</p>
 							<ul class="actions">
 								<li><a href="https://dronest.herokuapp.com" target="_blank" class="button equal-width">Visit Site</a>
@@ -252,8 +271,8 @@
 				</section>
 				<div class="double_down_buton_container">
 					<!-- <img src="images/double-down-icon.png" class="double_down_button" id='more_skills' /> -->
-					<img src="images/back_to_top.jpg" class="back_to_top_button"/>
-				</div>				
+					<img src="images/back_to_top.jpg" class="back_to_top_button" />
+				</div>
 
 				<!-- Section -->
 				<section id='skills'>
@@ -494,7 +513,7 @@
 				</section>
 				<div class="double_down_buton_container">
 					<img src="images/double-down-icon.png" class="double_down_button" id='more_skills' />
-					<img src="images/back_to_top.jpg" class="back_to_top_button"/>
+					<img src="images/back_to_top.jpg" class="back_to_top_button" />
 				</div>
 
 				<section id='resume'>
@@ -551,8 +570,8 @@
 					</div>
 				</section> -->
 				<div class="double_down_buton_container">
-					<img src="images/back_to_top.jpg" class="back_to_top_button"  />
-				</div>				
+					<img src="images/back_to_top.jpg" class="back_to_top_button" />
+				</div>
 			</div>
 		</div>
 

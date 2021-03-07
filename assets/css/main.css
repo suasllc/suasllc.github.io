@@ -1672,9 +1672,9 @@ button,
             height: 6em;
             margin: -3em 0 0 -3em;
             width: 6em; } } */
-  .features:hover{
+  /* .features:hover{
     height: 610px;
-  }
+  } */
 
   .expanded{
     height: 610px;
@@ -1695,9 +1695,9 @@ button,
 
 
   @media screen and (max-width: 480px) {
-    .features:hover{
+    /* .features:hover{
       height: 1400px;
-    }
+    } */
     .expanded{
       height: 1400px;
       min-height: fit-content;
