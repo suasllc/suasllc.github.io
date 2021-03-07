@@ -14,8 +14,24 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', (event) => {
 			console.log('DOM fully loaded and parsed');
+			const more_skills = document.getElementById('more_skills');
+			const skills_div = document.getElementById('skills_div');
+			let more_skills_expanded = false;
+			more_skills.addEventListener('click', e => {
+				more_skills_expanded = !more_skills_expanded;
+				console.log('more_skills_expanded', more_skills_expanded);
+				if(more_skills_expanded){
+					skills_div.classList.add('expanded');
+					more_skills.classList.add('up');
+					more_skills.classList.remove('down');
+				} else {
+					skills_div.classList.remove('expanded');
+					more_skills.classList.add('down');
+					more_skills.classList.remove('up');
+				}
+			});
 		});
-	</script>	
+	</script>
 </head>
 
 <body class="is-preload">
@@ -69,13 +85,13 @@
 							</a>
 							<a href='mailto:tony@suas.com' target="_blank" class="social-link-a" id='social-link-a-g'>
 								<img src='images/emailicon.jpg' alt='' class="social-icon-div github2" />
-							</a>							
+							</a>
 						</div>
 					</div>
 					<div class="content intro-div">
 						<header>
-							<h1>Hello</h1>
-							<p>I'm a Fullstack Software Engineer</p>
+							<h2 style="margin-top: -0.5em;">Hi, I'm Tony</h2>
+							<p>a Fullstack Software Engineer</p>
 						</header>
 						<p style="margin-top: -30px;">with experience in developing user-friendly and function-rich web applications
 							using React, Redux, Python, WebSocket, PostgreSQL, etc.
@@ -233,7 +249,7 @@
 					<header class="major">
 						<h2>SKILLS</h2>
 					</header>
-					<div class="features">
+					<div class="features" id='skills_div'>
 						<article>
 							<img src='https://www.yaya.today/img/referral/Technologies/tech_react.png' class='technology-icon'
 								alt="javascript" />
@@ -465,6 +481,9 @@
 						</article>
 					</div>
 				</section>
+				<div class="double_down_buton_container">
+					<img src="images/double-down-icon.png" class="double_down_button" id='more_skills'/>
+				</div>
 
 				<section id='resume'>
 					<h2>RESUME</h2>
@@ -497,7 +516,7 @@
 
 				<section id='contact'>
 					<h2>CONTACT</h2>
-					<div >
+					<div>
 						<a href='https://www.linkedin.com/in/tony-ngo-m/' target="_blank" class="social-link-a"
 							id='social-link-a-i'>
 							<img
@@ -509,7 +528,7 @@
 						</a>
 						<a href='mailto:tony@suas.com' target="_blank" class="social-link-a" id='social-link-a-g'>
 							<img src='images/emailicon.jpg' alt='' class="social-icon-div github2" />
-						</a>						
+						</a>
 					</div>
 				</section>
 				<!-- <section id='contact'>
