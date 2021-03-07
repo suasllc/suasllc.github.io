@@ -16,6 +16,8 @@
 			console.log('DOM fully loaded and parsed');
 			const more_skills = document.getElementById('more_skills');
 			const skills_div = document.getElementById('skills_div');
+			const back_to_top_buttons = document.querySelectorAll('.back_to_top_button');
+			console.log('back_to_top_buttons', back_to_top_buttons);
 			let more_skills_expanded = false;
 			more_skills.addEventListener('click', e => {
 				more_skills_expanded = !more_skills_expanded;
@@ -29,6 +31,11 @@
 					more_skills.classList.add('down');
 					more_skills.classList.remove('up');
 				}
+			});
+			back_to_top_buttons.forEach(btt => {
+				btt.addEventListener('click', e => {
+					window.location.pathname = '/#'
+				});
 			});
 		});
 	</script>
@@ -483,6 +490,7 @@
 				</section>
 				<div class="double_down_buton_container">
 					<img src="images/double-down-icon.png" class="double_down_button" id='more_skills'/>
+					<img src="images/back_to_top.jpg" class="back_to_top_button" id='double_down_button'/>
 				</div>
 
 				<section id='resume'>

@@ -1693,6 +1693,7 @@ button,
     transition: transform 1s ease-in-out;
   }
 
+
   @media screen and (max-width: 480px) {
     .features:hover{
       height: 1400px;
@@ -2400,5 +2401,13 @@ button,
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  position: relative;
 }
-
+.back_to_top_button{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  position: absolute;
+  border-radius: 50%;
+  right: 20px;
+}
