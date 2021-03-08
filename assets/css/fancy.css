@@ -1,0 +1,36 @@
+.modal {
+  position: fixed;
+  z-index: 11;
+  padding-top: 10px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(100, 100, 100, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overscroll-behavior: none; /* Prevent SCROLL-CHAINING to parent elements. */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  /* margin-top: 25vh; */
+  border: 1px solid rgb(220 220 220);
+  box-shadow: 0 7px 13px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: fit-content;
+  min-width: 400px;
+  /* min-height: 100px;
+  max-height: 600px; */
+  /* margin-left: 35vw; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* z-index: 10; */
+  overflow: hidden;
+  /* position: relative; */
+  overscroll-behavior: contain; /* Prevent SCROLL-CHAINING to parent elements. */
+  position: absolute;
+}
