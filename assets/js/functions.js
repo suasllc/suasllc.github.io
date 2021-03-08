@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const names = ['tripcamp', 'dronest', 'instavibes', 'vuirhd1', 'forgetmenotes', 'vuir_zoom'];
   const preview_options_divs = Array.from(document.querySelectorAll('.preview'));
   const hover_options_divs = Array.from(document.querySelectorAll('.hover_options'));
-  const viewLiveBtns = Array.from(document.querySelectorAll('.preview_button_live'));
-  const viewFullBtns = Array.from(document.querySelectorAll('.preview_button_full'));
+  const viewLiveBtns = Array.from(document.querySelectorAll('.preview_button.live'));
+  const viewFullBtns = Array.from(document.querySelectorAll('.preview_button.full'));
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
 
@@ -26,8 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const numberOfRowsNeeded = Math.ceil(numberOfIcons/numerOfIconsPerRow);
     const collapsedTotalHeight = 2 * unitHeight + 0;
     const expandedTotalHeight = numberOfRowsNeeded * unitHeight + 0;
-    console.log('numerOfIconsPerRow', numerOfIconsPerRow, numberOfIcons, numberOfRowsNeeded);
-    console.log('window.innerWidth', window.innerWidth);
+
     if (more_skills_expanded) {
       // skills_div.classList.add('expanded');
       skills_div.style.height = `${expandedTotalHeight}px`;
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     btn.addEventListener('click', e => {
       e.preventDefault();
       e.stopPropagation();
-      const name = btn.classList.toString().split(' ')[1];
+      const name = btn.classList.toString().split(' ')[2];
       const modal = modals.find(m => m.classList.contains(name));
       if(modal){
         modal.classList.remove('hidden');
