@@ -34,3 +34,57 @@
   overscroll-behavior: contain; /* Prevent SCROLL-CHAINING to parent elements. */
   position: absolute;
 }
+.hover_options{
+  position: absolute;
+  z-index: 10;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 500px; */
+  /* width: 100%; */
+  /* top: 50%; */
+  /* right: 50%; */
+  /* visibility: hidden; */
+  /* height: 200px; */
+  width: 90%;
+  height: 90%;
+  top: calc((100% - 90%)/2);
+  right: calc((100% - 90%)/2);
+  /* border: 1px solid red; */
+  z-index: 10;
+}
+.preview_button{
+  background-color: rgba(32, 83, 107, 0.719);
+  /* padding: 3px 10px !important; */
+  /* display: flex; */
+  /* vertical-align: middle; */
+
+  white-space: nowrap;
+  /* display: inline-block; */
+  justify-content: center;
+  align-items: center;
+  margin: auto 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+
+}
+.preview_button:hover{
+  background-color: rgba(9, 24, 31, 0.719);
+}
+.hover_options{
+  visibility: hidden;
+}
+.hidden{
+  display: none;
+}
+.shown_flex{
+  display: flex;
+}
+.x_close{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+}

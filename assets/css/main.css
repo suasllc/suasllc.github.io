@@ -1224,7 +1224,9 @@ input[type="radio"] + label:before {
 .image {
   border-radius: 0.375em;
   border: 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative; }
   .image img {
     border-radius: 0.375em;
@@ -2204,9 +2206,14 @@ button,
   margin-top: -15px;
 }
 .equal-width{
-  width: 130px;
+  width: 110px;
   display: flex;
   justify-content: center;
+}
+@media screen and (max-width: 736px) {
+  .equal-width{
+    width: 95px;
+  }
 }
 
 .pdf_icon{

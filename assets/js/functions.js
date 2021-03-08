@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const skills_div = document.getElementById('skills_div');
   const back_to_top_buttons = document.querySelectorAll('.back_to_top_button');
   let more_skills_expanded = false;
+  const names = ['tripcamp', 'dronest', 'instavibes', 'vuirhd1', 'forgetmenotes', 'vuir_zoom'];
+  const preview_options_divs = Array.from(document.querySelectorAll('.preview'));
+  const hover_options_divs = Array.from(document.querySelectorAll('.hover_options'));
+  const viewLiveBtns = Array.from(document.querySelectorAll('.preview_button_live'));
+  const viewFullBtns = Array.from(document.querySelectorAll('.preview_button_full'));
+  const modals = Array.from(document.querySelectorAll('.modal'));
+  const closeButtons = document.querySelectorAll('.x_close');
 
   let handleExpandCollapse = () => {
     const numberOfIcons = document.querySelectorAll('#skills article').length;
@@ -33,6 +40,48 @@ document.addEventListener('DOMContentLoaded', (event) => {
       more_skills.classList.remove('up');
     }
   };
+
+  preview_options_divs.forEach(div => {
+    div.addEventListener('mouseover', e => {
+      const name = names.find(name => div.classList.contains(name));
+      const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
+      hover_options_div.style.visibility = 'visible';
+    });
+    div.addEventListener('mouseleave', e => {
+      const name = names.find(name => div.classList.contains(name));
+      const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
+      hover_options_div.style.visibility = 'hidden';
+    });
+  }); 
+  viewFullBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const name = btn.classList.toString().split(' ')[1];
+      const modal = modals.find(m => m.classList.contains(name));
+      if(modal){
+        modal.classList.remove('hidden');
+        modal.classList.add('shown_flex');
+      }
+    });
+  });
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      e.preventDefault();
+      modals.forEach(m => {
+        m.classList.remove('shown_flex');
+        m.classList.add('hidden');
+      })
+    });
+  });
+
+  modals.forEach(m => {
+    m.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+    })
+  });
 
   more_skills.addEventListener('click', e => {
     more_skills_expanded = !more_skills_expanded;
