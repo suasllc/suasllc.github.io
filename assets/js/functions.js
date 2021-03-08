@@ -10,11 +10,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const viewFullBtns = Array.from(document.querySelectorAll('.preview_button.full'));
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
+  const numberOfIcons = document.querySelectorAll('#skills article').length;
+  const unitWidth = 110;
+  const unitHeight = unitWidth;
+  const collapsedTotalHeight = 2 * unitHeight + 0;
+  skills_div.style.height = `${collapsedTotalHeight}px`;
 
   let handleExpandCollapse = () => {
-    const numberOfIcons = document.querySelectorAll('#skills article').length;
-    const unitWidth = 110;
-    const unitHeight = unitWidth;
     const margin = () => {
       if(window.innerWidth > 1680) return 6 * 16;
       if(window.innerWidth > 1280) return 5 * 16;
@@ -24,7 +26,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const numerOfIconsPerRow = Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
     const numberOfRowsNeeded = Math.ceil(numberOfIcons/numerOfIconsPerRow);
-    const collapsedTotalHeight = 2 * unitHeight + 0;
     const expandedTotalHeight = numberOfRowsNeeded * unitHeight + 0;
 
     if (more_skills_expanded) {

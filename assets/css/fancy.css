@@ -88,3 +88,18 @@
   right: 20px;
   font-size: 30px;
 }
+/* .modal:hover{
+  transform: scale(1) !important;
+}
+.modal>div:hover{
+  transform: scale(1) !important;
+}
+.modal>div>img:hover{
+  transform: scale(1) !important;
+}
+.modal-content:hover{
+  transform: scale(1) !important;
+}
+.modal-content>img:hover{
+  transform: scale(1) !important;
+} */
