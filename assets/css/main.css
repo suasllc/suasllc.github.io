@@ -64,6 +64,10 @@ input, select, textarea {
 .a-no-underline {
   text-decoration: none !important;
 }
+.a-no-underline:hover{
+  color: #178ef7;
+  font-weight: bold;
+}
 /* Basic */
 @-ms-viewport {
   width: device-width; }
@@ -2419,5 +2423,11 @@ button,
   object-fit: contain;
   position: absolute;
   border-radius: 50%;
-  right: 20px;
+  right: 20px;  
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.back_to_top_button:hover{
+  transform: scale(1.5);
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
 }
