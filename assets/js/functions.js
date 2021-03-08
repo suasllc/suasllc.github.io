@@ -14,18 +14,46 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const unitWidth = 110;
   const unitHeight = unitWidth;
   const collapsedTotalHeight = 2 * unitHeight + 0;
-  skills_div.style.height = `${collapsedTotalHeight}px`;
+  const instavibesPrevImg = document.querySelector('.prev_img.instavibes');
+  const tripcampPrevImg = document.querySelector('.prev_img.tripcamp');
+
+  if (instavibesPrevImg) {
+    let interval = 12000;
+    setInterval(() => {
+      if (Math.random() > 0.5)
+        instavibesPrevImg.src = 'images/instavibes1.jpg';
+      else {
+        instavibesPrevImg.src = 'images/instavibes.gif';
+      }
+    }, interval);
+  }
+  if (tripcampPrevImg) {
+    setTimeout(() => {
+      tripcampPrevImg.src = 'images/tripcamp3.gif';
+    }, 6000);
+
+    let interval = 12000;
+    setInterval(() => {
+      if (Math.random() > 0.5)
+        tripcampPrevImg.src = 'images/tripcamp.png';
+      else {
+        tripcampPrevImg.src = 'images/tripcamp3.gif';
+      }
+    }, interval);
+  }
+
+  if (skills_div) skills_div.style.height = `${collapsedTotalHeight}px`;
 
   let handleExpandCollapse = () => {
     const margin = () => {
-      if(window.innerWidth > 1680) return 6 * 16;
-      if(window.innerWidth > 1280) return 5 * 16;
-      if(window.innerWidth > 736) return 4 * 16;
+      if (window.innerWidth > 1680) return 6 * 16;
+      if (window.innerWidth > 1280) return 5 * 16;
+      if (window.innerWidth > 736) return 4 * 16;
       return 2 * 16;
     }
 
     const numerOfIconsPerRow = Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
-    const numberOfRowsNeeded = Math.ceil(numberOfIcons/numerOfIconsPerRow);
+    const numberOfRowsNeeded = Math.ceil(numberOfIcons / numerOfIconsPerRow);
     const expandedTotalHeight = numberOfRowsNeeded * unitHeight + 0;
 
     if (more_skills_expanded) {
@@ -45,23 +73,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
     div.addEventListener('mouseover', e => {
       const name = names.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
-      if(hover_options_div)
+      if (hover_options_div)
         hover_options_div.style.visibility = 'visible';
     });
     div.addEventListener('mouseleave', e => {
       const name = names.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
-      if(hover_options_div)
+      if (hover_options_div)
         hover_options_div.style.visibility = 'hidden';
     });
-  }); 
+  });
   viewFullBtns.forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
       e.stopPropagation();
       const name = btn.classList.toString().split(' ')[2];
       const modal = modals.find(m => m.classList.contains(name));
-      if(modal){
+      if (modal) {
         modal.classList.remove('hidden');
         modal.classList.add('shown_flex');
       }
