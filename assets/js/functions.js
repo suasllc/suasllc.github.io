@@ -45,12 +45,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     div.addEventListener('mouseover', e => {
       const name = names.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
-      hover_options_div.style.visibility = 'visible';
+      if(hover_options_div)
+        hover_options_div.style.visibility = 'visible';
     });
     div.addEventListener('mouseleave', e => {
       const name = names.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
-      hover_options_div.style.visibility = 'hidden';
+      if(hover_options_div)
+        hover_options_div.style.visibility = 'hidden';
     });
   }); 
   viewFullBtns.forEach(btn => {
