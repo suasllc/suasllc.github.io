@@ -16,31 +16,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const collapsedTotalHeight = 2 * unitHeight + 0;
   const instavibesPrevImg = document.querySelector('.prev_img.instavibes');
   const tripcampPrevImg = document.querySelector('.prev_img.tripcamp');
+  const prevImgs = document.querySelectorAll('.prev_img');
+  const srcObj = {
+    tripcamp: ['images/tripcamp.png', 'images/tripcamp3.gif', 12000, 12000],
+    dronest: ['images/dronest.png', 'images/dronest4_small.gif', 6000, 18000],
+    instavibes: ['images/instavibes1.jpg', 'images/instavibes.gif', 10000, 14000],
+  };
 
-  if (instavibesPrevImg) {
-    let interval = 12000;
-    setInterval(() => {
-      if (Math.random() > 0.5)
-        instavibesPrevImg.src = 'images/instavibes1.jpg';
-      else {
-        instavibesPrevImg.src = 'images/instavibes.gif';
-      }
-    }, interval);
-  }
-  if (tripcampPrevImg) {
+  prevImgs.forEach(prev => {
+    const name = prev.classList.toString().split(' ')[1];
+    if(!name) return;
+    const srcs = srcObj[name];
+    let interval = srcs[3];
     setTimeout(() => {
-      tripcampPrevImg.src = 'images/tripcamp3.gif';
-    }, 6000);
-
-    let interval = 12000;
+      prev.src = srcs[1];
+    }, srcs[2]);
     setInterval(() => {
       if (Math.random() > 0.5)
-        tripcampPrevImg.src = 'images/tripcamp.png';
+        prev.src = srcs[0]
       else {
-        tripcampPrevImg.src = 'images/tripcamp3.gif';
+        prev.src = srcs[1];
       }
     }, interval);
-  }
+  });
 
   if (skills_div) skills_div.style.height = `${collapsedTotalHeight}px`;
 
