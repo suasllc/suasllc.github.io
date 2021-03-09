@@ -17,16 +17,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const prevImgs = Array.from(document.querySelectorAll('.prev_img'));
   const srcObj = {
     tripcamp: ['images/tripcamp.png', 'images/tripcamp3.gif', 6000, 12000],
-    dronest: ['images/dronest.png', 'images/dronest4_small.gif', 22000, 18000],
-    instavibes: ['images/instavibes1.jpg', 'images/instavibes.gif', 34000, 14000],
+    dronest: ['images/dronest.png', 'images/dronest4_small.gif', 20000, 18000],
+    instavibes: ['images/instavibes1.jpg', 'images/instavibes.gif', 32000, 14000],
   };
 
+  const stopOtherRunningGifs = (name) => {
+    prevImgs.filter(img => !img.classList.contains(name))
+    .forEach(img => {
+      const name = img.classList.toString().split(' ')[1];
+      if(name) img.src = srcObj[name][0];
+    });
+  }
   prevImgs.forEach(prev => {
     const name = prev.classList.toString().split(' ')[1];
     if (!name) return;
     const srcs = srcObj[name];
     setTimeout(() => {
-      if (prev.src !== srcs[1]) prev.src = srcs[1];
+      if (prev.src !== srcs[1]) {
+        prev.src = srcs[1];
+        stopOtherRunningGifs(name);
+      }
     }, srcs[2]);
     setTimeout(() => {
       prev.src = srcs[0];
@@ -78,11 +88,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       if (prevImg) {
         if (prevImg.src !== srcObj[name][1]) prevImg.src = srcObj[name][1];
       }
-      prevImgs.filter(img => !img.classList.contains(name))
-        .forEach(img => {
-          const name = img.classList.toString().split(' ')[1];
-          if(name) img.src = srcObj[name][0];
-        });
+      stopOtherRunningGifs(name);
     });
     div.addEventListener('mouseleave', e => {
       const name = names.find(name => div.classList.contains(name));
