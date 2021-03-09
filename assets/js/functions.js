@@ -2,6 +2,7 @@
 import { skillObjs } from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  addSkillNav();
   populateSkillIcons();
 
   const more_skills = document.getElementById('more_skills');
@@ -193,22 +194,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function populateSkillIcons() {
-
   const skills_div = document.getElementById('skills_div');
-  // const skillObjs = [];
-  // srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
   skillObjs.forEach(el => {
     const article = document.createElement('article');
     article.innerHTML = `<img src=${el.src} class='technology-icon Redux' alt=${el.alt} />`;
     skills_div.appendChild(article);
   });
-
-  /*
-            <article>
-              <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
-              <!-- <div class="content">
-                <h3>Sed magna finibus</h3>
-              </div> -->
-            </article>
-  */
 }
+
+function removeSkills() {
+  const skills_div = document.getElementById('skills_div');
+  skills_div.innerHTML = "";
+}
+
+
+function addSkillNav() {
+  const skills_nav_div = document.getElementById('skills_nav_div');
+  const navdiv = document.createElement('div');
+  navdiv.innerHTML =
+    '<div class="profile-posts-nav four" > \
+    <a  href="/skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"   >\
+      ALL\
+    </a>\
+    <a  href="/skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"   >\
+      LANGUAGES\
+    </a>\
+    <a  href="/skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"   >\
+      MODULES\
+    </a>\
+  </div>';
+  skills_nav_div.appendChild(navdiv);
+}
+  /*
+// const skillObjs = [];
+// srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
+        <article>
+          <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
+          <!-- <div class="content">
+            <h3>Sed magna finibus</h3>
+          </div> -->
+        </article>
+*/
