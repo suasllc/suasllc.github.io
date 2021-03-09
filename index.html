@@ -112,7 +112,7 @@
 									<div class="modal-content">
 										<img src="images/tripcamp3.gif" alt="" />
 									</div>
-									<input style="z-index: -1;" autofocus class="escape tripcamp" type="text">
+									<input style="z-index: -1;" class="escape tripcamp" type="text">
 									<div class="x_close"><i class="fas fa-times"></i></div>
 								</div>
 							</div>
@@ -486,21 +486,32 @@
 					</div>					 -->
 					<img src="images/back_to_top.jpg" class="back_to_top_button" />
 				</div>
-
 				<section id='resume'>
-					<h2>RESUME</h2>
-					<div style="display: flex; ">
-						<a href="/files/tony_ngo_resume.pdf" class="download_a">
-							<img class="pdf_icon" src="https://www.online-tech-tips.com/wp-content/uploads/2019/09/pdf-search.png" />
-							View My Resume</a>
-						<a href="/files/tony_ngo_resume.pdf" download class="download_a">
-							<img class="pdf_icon" src="https://www.iconpacks.net/icons/2/free-pdf-download-icon-2617-thumb.png" />
-							Download</a>
+					<header class="major">
+						<h2>RESUME</h2>
+					</header>
+					<div class="resume_prev_and_button">
+						<a href="files/tony_ngo_resume.pdf" class="download_a button big">
+							<!-- <img class="pdf_icon" src="https://www.online-tech-tips.com/wp-content/uploads/2019/09/pdf-search.png" /> -->
+							View Fullscreen
+						</a>
+						<!-- <img class="pdf_icon" src="https://www.iconpacks.net/icons/2/free-pdf-download-icon-2617-thumb.png" /> -->
+						<!-- <iframe src="files/tony_ngo_resume.pdf"  class="pdf_embed"></iframe> -->
+						<object data="files/tony_ngo_resume.pdf#zoom=FitW" type="application/pdf" class="pdf_embed">
+							<p>Your web browser doesn't have a PDF plugin for direct viewing.
+								Click the button above to view it fullscreen.
+								<!-- <a href="files/tony_ngo_resume.pdf" download class="download_a button big">
+									Download
+								</a> -->
+							</p>
+						</object>
 					</div>
 				</section>
 
 				<section id='education'>
-					<h2>EDUCATION</h2>
+					<header class="major">
+						<h2>EDUCATION</h2>
+					</header>
 					<div>
 						<ol>
 							<li>
@@ -517,7 +528,9 @@
 				</section>
 
 				<section id='contact'>
-					<h2>CONTACT</h2>
+					<header class="major">
+						<h2>CONTACT</h2>
+					</header>
 					<div>
 						<a href='https://www.linkedin.com/in/tony-ngo-m/' target="_blank" class="social-link-a"
 							id='social-link-a-i'>
