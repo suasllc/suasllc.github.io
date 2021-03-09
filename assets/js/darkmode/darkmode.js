@@ -122,12 +122,12 @@ class Darkmode {
     background.classList.add('darkmode-background');
 
     const darkmodeActivated =
-      window.localStorage.getItem('darkmode') === 'true';
+      window.localStorage.getItem('tonyngo.me_darkmode') === 'true';
     const preferedThemeOs =
       options.autoMatchOsTheme &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     const darkmodeNeverActivatedByAction =
-      window.localStorage.getItem('darkmode') === null;
+      window.localStorage.getItem('tonyngo.me_darkmode') === null;
 
     if (
       (darkmodeActivated === true && options.saveInCookies) ||
@@ -208,7 +208,7 @@ class Darkmode {
 
       button.classList.toggle('darkmode-toggle--white');
       document.body.classList.toggle('darkmode--activated');
-      window.localStorage.setItem('darkmode', !isDarkmode);
+      window.localStorage.setItem('tonyngo.me_darkmode', !isDarkmode);
     });
   }
 
@@ -222,7 +222,7 @@ class Darkmode {
 
     layer.classList.toggle('darkmode-layer--simple');
     document.body.classList.toggle('darkmode--activated');
-    window.localStorage.setItem('darkmode', !isDarkmode);
+    window.localStorage.setItem('tonyngo.me_darkmode', !isDarkmode);
     button.setAttribute("aria-label", "De-activate dark mode");
     button.setAttribute("aria-checked", "true");
 
