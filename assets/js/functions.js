@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     dronest: ['images/dronest.png', 'images/dronest4_small.gif', 20000, 18000],
     instavibes: ['images/instavibes1.jpg', 'images/instavibes.gif', 32000, 14000],
   };
+  const escapeInputs = Array.from(document.querySelectorAll('.escape'));
 
   const stopOtherRunningGifs = (name) => {
     prevImgs.filter(img => !img.classList.contains(name))
@@ -28,6 +29,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
       if(name) img.src = srcObj[name][0];
     });
   }
+  escapeInputs.forEach(esp => {
+    esp.addEventListener('keydown', e => {
+      if(e.key === 'Escape'){
+        modals.forEach(m => {
+          m.classList.remove('shown_flex');
+          m.classList.add('hidden');
+        });
+      }
+    });
+  });
   prevImgs.forEach(prev => {
     const name = prev.classList.toString().split(' ')[1];
     if (!name) return;
@@ -110,6 +121,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
       if (modal) {
         modal.classList.remove('hidden');
         modal.classList.add('shown_flex');
+        const espInput = escapeInputs.find(esp => esp.classList.contains(name));
+        if(espInput) espInput.focus();
       }
     });
   });
