@@ -117,6 +117,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       e.stopPropagation();
       const name = btn.classList.toString().split(' ')[2];
       const modal = modals.find(m => m.classList.contains(name));
+      const prevImg = prevImgs.find(img => img.classList.contains(name));
+      if (prevImg) {
+        prevImg.src = srcObj[name][0];
+      }      
       if (modal) {
         modal.classList.remove('hidden');
         modal.classList.add('shown_flex');

@@ -131,4 +131,12 @@
   display: flex;
   justify-content: center;
 }
+.escape{
+  position: fixed;
+  top: -300px;
+  width: 5px;
+}
+/* .prev_img{
+  z-index: 10;
+} */
 
