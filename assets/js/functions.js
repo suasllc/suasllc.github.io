@@ -77,14 +77,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const expandedTotalHeight = numberOfRowsNeeded * unitHeight + 0;
 
     if (more_skills_expanded) {
-      // skills_div.classList.add('expanded');
       skills_div.style.height = `${expandedTotalHeight}px`;
       more_skills.classList.add('up');
-      more_skills.classList.remove('down');
     } else {
-      // skills_div.classList.remove('expanded');
       skills_div.style.height = `${collapsedTotalHeight}px`;
-      more_skills.classList.add('down');
       more_skills.classList.remove('up');
     }
   };
