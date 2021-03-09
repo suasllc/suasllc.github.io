@@ -74,6 +74,7 @@ class Darkmode {
         display: flex;
         justify-content: center;
         align-items: center;
+        // font-size: 1.5em;
       }
 
       .darkmode-toggle--white {
@@ -113,7 +114,8 @@ class Darkmode {
     const button = document.createElement('button');
     const background = document.createElement('div');
 
-    button.innerHTML = options.label;
+    // button.innerHTML = options.label;
+    button.innerHTML = '<label style="font-size: 2em; margin-top: 1em;">🌓</label>'
     button.classList.add('darkmode-toggle--inactive');
     layer.classList.add('darkmode-layer');
     background.classList.add('darkmode-background');
@@ -184,6 +186,8 @@ class Darkmode {
       if (!isDarkmode) {
         layer.classList.add('darkmode-layer--expanded');
         button.setAttribute('disabled', true);
+        // button.innerHTML = '<label style="font-size: 2em; margin-top: 1em;">🌚</label>'
+        button.innerHTML = '<label style="font-size: 2em; margin-top: 1em; color: #ee9900; "><i class="fas fa-sun"></i></label>'
         setTimeout(() => {
           layer.classList.add('darkmode-layer--no-transition');
           layer.classList.add('darkmode-layer--simple');
@@ -192,6 +196,8 @@ class Darkmode {
       } else {
         layer.classList.remove('darkmode-layer--simple');
         button.setAttribute('disabled', true);
+        // button.innerHTML = '<label style="font-size: 2em; margin-top: 1em;">🌞</label>'
+        button.innerHTML = '<label style="font-size: 2em; margin-top: 1em; color: white;"><i class="far fa-moon"></i></label>'
         setTimeout(() => {
           layer.classList.remove('darkmode-layer--no-transition');
           layer.classList.remove('darkmode-layer--expanded');
