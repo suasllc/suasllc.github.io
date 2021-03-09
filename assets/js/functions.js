@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const names = ['tripcamp', 'dronest', 'instavibes', 'vuirhd1', 'forgetmenotes', 'vuir_zoom'];
   const preview_options_divs = Array.from(document.querySelectorAll('.preview'));
   const hover_options_divs = Array.from(document.querySelectorAll('.hover_options'));
-  const viewLiveBtns = Array.from(document.querySelectorAll('.preview_button.live'));
+  // const viewLiveBtns = Array.from(document.querySelectorAll('.preview_button.live'));
   const viewFullBtns = Array.from(document.querySelectorAll('.preview_button.full'));
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   const stopOtherRunningGifs = (name) => {
     prevImgs.filter(img => !img.classList.contains(name))
-    .forEach(img => {
-      const name = img.classList.toString().split(' ')[1];
-      if(name) img.src = srcObj[name][0];
-    });
+      .forEach(img => {
+        const name = img.classList.toString().split(' ')[1];
+        if (name) img.src = srcObj[name][0];
+      });
   }
   escapeInputs.forEach(esp => {
     esp.addEventListener('keydown', e => {
-      if(e.key === 'Escape'){
+      if (e.key === 'Escape') {
         modals.forEach(m => {
           m.classList.remove('shown_flex');
           m.classList.add('hidden');
@@ -93,8 +93,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     div.addEventListener('mouseover', e => {
       const name = names.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
-      if (hover_options_div)
-        hover_options_div.style.visibility = 'visible';
+      if (hover_options_div) {
+        // setTimeout(() => {
+          hover_options_div.style.visibility = 'visible'
+        // }, 500);
+      }
       const prevImg = prevImgs.find(img => img.classList.contains(name));
       if (prevImg) {
         if (prevImg.src !== srcObj[name][1]) prevImg.src = srcObj[name][1];
@@ -122,7 +125,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         modal.classList.remove('hidden');
         modal.classList.add('shown_flex');
         const espInput = escapeInputs.find(esp => esp.classList.contains(name));
-        if(espInput) espInput.focus();
+        if (espInput && !isMobile()) espInput.focus();
       }
     });
   });
