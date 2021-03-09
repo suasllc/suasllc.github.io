@@ -1,4 +1,8 @@
+import { srcs, alts } from './skilldata.js';
+
 document.addEventListener('DOMContentLoaded', (event) => {
+  populateSkillIcons();
+
   const more_skills = document.getElementById('more_skills');
   const skills_div = document.getElementById('skills_div');
   const back_to_top_buttons = document.querySelectorAll('.back_to_top_button');
@@ -91,7 +95,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
       if (hover_options_div) {
         // setTimeout(() => {
-          hover_options_div.style.visibility = 'visible'
+        hover_options_div.style.visibility = 'visible'
         // }, 500);
       }
       const prevImg = prevImgs.find(img => img.classList.contains(name));
@@ -120,7 +124,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const prevImg = prevImgs.find(img => img.classList.contains(name));
       if (prevImg) {
         prevImg.src = srcObj[name][0];
-      }      
+      }
       if (modal) {
         modal.classList.remove('hidden');
         modal.classList.add('shown_flex');
@@ -186,3 +190,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   });
 });
+
+function populateSkillIcons() {
+
+  const skills_div = document.getElementById('skills_div');
+  const skillObjs = [];
+  srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
+  skillObjs.forEach(el => {
+    const article = document.createElement('article');
+    article.innerHTML = `<img src=${el.src} class='technology-icon Redux' alt=${el.alt} />`;
+    skills_div.appendChild(article);
+  });
+
+  /*
+            <article>
+              <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
+              <!-- <div class="content">
+                <h3>Sed magna finibus</h3>
+              </div> -->
+            </article>
+  */
+}
