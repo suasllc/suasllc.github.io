@@ -1,4 +1,5 @@
-import { srcs, alts } from './skilldata.js';
+// import { srcs, alts } from './skilldata.js';
+import { skillObjs } from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   populateSkillIcons();
@@ -194,8 +195,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function populateSkillIcons() {
 
   const skills_div = document.getElementById('skills_div');
-  const skillObjs = [];
-  srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
+  // const skillObjs = [];
+  // srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
   skillObjs.forEach(el => {
     const article = document.createElement('article');
     article.innerHTML = `<img src=${el.src} class='technology-icon Redux' alt=${el.alt} />`;

@@ -1,229 +1,260 @@
-const srcs = [
-  'images/tech_react.png',
-  'images/redux.png',
-  'images/js-logo.png',
-  'images/c__.png',
-  'images/python.jpg',
-  'images/java.png',
-  'images/c.png',
-  'images/android-studio.png',
-  'images/android-icon.png',
-  'images/qt.jpg',
-  'images/qml.png',
-  'images/postgresql.png',
-  'images/flask.png',
-  'images/flask-sqlalchemy-logo.png',
-  'images/aws.png',
-  'images/docker.png',
-  'images/heroku.svg',
-  'images/node-js-icon-8.jpg',
-  'images/websocket.jpeg',
-  'images/Sequelize-icon.png',
-  'images/expressjs.png',
-  'images/npm.png',
-  'images/pipenv.png',
-  'images/css3.png',
-  'images/html.png',
-  'images/ubuntu.png',
-  'images/arduino.png',
-  'images/raspberrypi.png',
-  'images/autoinventor.png',
-  'images/ros.png',
-  'images/opencv.webp'
-];
+// const srcs = [
+//   'images/tech_react.png',
+//   'images/redux.png',
+//   'images/js-logo.png',
+//   'images/c__.png',
+//   'images/python.jpg',
+//   'images/java.png',
+//   'images/c.png',
+//   'images/android-studio.png',
+//   'images/android-icon.png',
+//   'images/qt.jpg',
+//   'images/qml.png',
+//   'images/postgresql.png',
+//   'images/flask.png',
+//   'images/flask-sqlalchemy-logo.png',
+//   'images/aws.png',
+//   'images/docker.png',
+//   'images/heroku.svg',
+//   'images/node-js-icon-8.jpg',
+//   'images/websocket.jpeg',
+//   'images/Sequelize-icon.png',
+//   'images/expressjs.png',
+//   'images/npm.png',
+//   'images/pipenv.png',
+//   'images/css3.png',
+//   'images/html.png',
+//   'images/ubuntu.png',
+//   'images/arduino.png',
+//   'images/raspberrypi.png',
+//   'images/autoinventor.png',
+//   'images/ros.png',
+//   'images/opencv.webp'
+// ];
 
-const alts = [
-  'React',
-  'Redux',
-  'JavaScript',
-  'C++',
-  'Python',
-  'Java',
-  'C',
-  'Android Studio XML',
-  'Android Developer',
-  'Qt QtCreator',
-  'QML',
-  'PostgreSQL',
-  'Flask',
-  'SqlAlchemy',
-  'AWS S3',
-  'Docker',
-  'Heroku',
-  'Node.js Node NodeJS',
-  'Websocket',
-  'Sequelize',
-  'ExpressJS Express',
-  'NPM',
-  'PipEnv',
-  'CSS CSS3',
-  'HTML HTML5',
-  'Ubuntu Linux',
-  'Arduino',
-  'Raspberry Pi single board computer SBC',
-  'AutoDesk Inventor 3D',
-  'ROS Robot Operating System',
-  'OpenCV'];
+// const alts = [
+//   'React',
+//   'Redux',
+//   'JavaScript',
+//   'C++',
+//   'Python',
+//   'Java',
+//   'C',
+//   'Android Studio XML',
+//   'Android Developer',
+//   'Qt QtCreator',
+//   'QML',
+//   'PostgreSQL',
+//   'Flask',
+//   'SqlAlchemy',
+//   'AWS S3',
+//   'Docker',
+//   'Heroku',
+//   'Node.js Node NodeJS',
+//   'Websocket',
+//   'Sequelize',
+//   'ExpressJS Express',
+//   'NPM',
+//   'PipEnv',
+//   'CSS CSS3',
+//   'HTML HTML5',
+//   'Ubuntu Linux',
+//   'Arduino',
+//   'Raspberry Pi single board computer SBC',
+//   'AutoDesk Inventor 3D',
+//   'ROS Robot Operating System',
+//   'OpenCV'];
 
-const skillObjs = [];
-srcs.forEach((el, i) => skillObjs.push({ src: el, alt: alts[i], name: alts[i].replaceAll(' ', '_') }));
+// const skillObjs = [];
+// srcs.forEach((el, i) => skillObjs.push({ src: el, alt: alts[i], name: alts[i].replaceAll(' ', '_') }));
 
-const skillObjs2 = [
+export const skillObjs = [
   {
     src: 'images/tech_react.png',
     alt: 'React',
-    name: 'React'
+    name: 'React',
+    type: 'Library',
   },
   {
     src: 'images/redux.png',
     alt: 'Redux',
-    name: 'Redux'
+    name: 'Redux',
+    type: 'Library',
   },
   {
     src: 'images/js-logo.png',
     alt: 'JavaScript',
-    name: 'JavaScript'
+    name: 'JavaScript',
+    type: 'Language',
   },
   {
     src: 'images/c__.png',
     alt: 'C++',
-    name: 'C++'
+    name: 'C++',
+    type: 'Language',
   },
   {
     src: 'images/python.jpg',
     alt: 'Python',
-    name: 'Python'
+    name: 'Python',
+    type: 'Language',
   },
   {
     src: 'images/java.png',
     alt: 'Java',
-    name: 'Java'
+    name: 'Java',
+    type: 'Language',
   },
   {
     src: 'images/c.png',
     alt: 'C',
-    name: 'C'
+    name: 'C',
+    type: 'Language',
   },
   {
     src: 'images/android-studio.png',
     alt: 'Android Studio XML',
-    name: 'Android_Studio_XML'
+    name: 'Android Studio',
+    type: 'IDE',
   },
   {
     src: 'images/android-icon.png',
     alt: 'Android Developer',
-    name: 'Android_Developer'
+    name: 'Android Developer',
+    type: 'Badge',
   },
   {
     src: 'images/qt.jpg',
     alt: 'Qt QtCreator',
-    name: 'Qt_QtCreator'
+    name: 'Qt/QtCreator',
+    type: 'IDE',
   },
   {
     src: 'images/qml.png',
     alt: 'QML',
-    name: 'QML'
+    name: 'QML',
+    type: 'Language',
   },
   {
     src: 'images/postgresql.png',
     alt: 'PostgreSQL',
-    name: 'PostgreSQL'
+    name: 'PostgreSQL',
+    type: 'System',
   },
   {
     src: 'images/flask.png',
     alt: 'Flask',
-    name: 'Flask'
+    name: 'Flask',
+    type: 'Framework',
   },
   {
     src: 'images/flask-sqlalchemy-logo.png',
     alt: 'SqlAlchemy',
-    name: 'SqlAlchemy'
+    name: 'SqlAlchemy',
+    type: 'Module',
   },
   {
     src: 'images/aws.png',
     alt: 'AWS S3',
-    name: 'AWS_S3'
+    name: 'AWS_S3',
+    type: 'Service',
   },
   {
     src: 'images/docker.png',
     alt: 'Docker',
-    name: 'Docker'
+    name: 'Docker',
+    type: 'Platform'
   },
   {
     src: 'images/heroku.svg',
     alt: 'Heroku',
-    name: 'Heroku'
+    name: 'Heroku',
+    type: 'Service',
   },
   {
     src: 'images/node-js-icon-8.jpg',
     alt: 'Node.js Node NodeJS',
-    name: 'Node.js_Node_NodeJS'
+    name: 'NodeJS',
+    type: 'Environment',
   },
   {
     src: 'images/websocket.jpeg',
     alt: 'Websocket',
-    name: 'Websocket'
+    name: 'Websocket',
+    type: 'Technology',
   },
   {
     src: 'images/Sequelize-icon.png',
     alt: 'Sequelize',
-    name: 'Sequelize'
+    name: 'Sequelize',
+    type: 'Module',
   },
   {
     src: 'images/expressjs.png',
     alt: 'ExpressJS Express',
-    name: 'ExpressJS_Express'
+    name: 'Express',
+    type: 'Module',
   },
   {
     src: 'images/npm.png',
     alt: 'NPM',
-    name: 'NPM'
+    name: 'NPM',
+    type: 'Package Manager',
   },
   {
     src: 'images/pipenv.png',
     alt: 'PipEnv',
-    name: 'PipEnv'
+    name: 'PipEnv',
+    type: 'Package Manager',
   },
   {
     src: 'images/css3.png',
     alt: 'CSS CSS3',
-    name: 'CSS_CSS3'
+    name: 'CSS/CSS3',
+    type: 'Language',
   },
   {
     src: 'images/html.png',
     alt: 'HTML HTML5',
-    name: 'HTML_HTML5'
+    name: 'HTML/HTML5',
+    type: 'Language',
   },
   {
     src: 'images/ubuntu.png',
     alt: 'Ubuntu Linux',
-    name: 'Ubuntu_Linux'
+    name: 'Ubuntu/Linux',
+    type: "OS",
   },
   {
     src: 'images/arduino.png',
     alt: 'Arduino',
-    name: 'Arduino'
+    name: 'Arduino',
+    type: 'Hardware/Software',
   },
   {
     src: 'images/raspberrypi.png',
     alt: 'Raspberry Pi single board computer SBC',
-    name: 'Raspberry_Pi_single_board_computer_SBC'
+    name: 'Raspberry Pi/SBC',
+    type: 'Hardware/Software',
   },
   {
     src: 'images/autoinventor.png',
     alt: 'AutoDesk Inventor 3D',
-    name: 'AutoDesk_Inventor_3D'
+    name: 'AutoDesk Inventor/CAD',
+    type: 'Application',
   },
   {
     src: 'images/ros.png',
     alt: 'ROS Robot Operating System',
-    name: 'ROS_Robot_Operating_System'
+    name: 'ROS Robot Operating System',
+    type: 'OS'
   },
   {
     src: 'images/opencv.webp',
     alt: 'OpenCV',
-    name: 'OpenCV'
+    name: 'OpenCV',
+    type: 'Library'
   }
 ]
 
-console.log(skillObjs2);
+// console.log(skillObjs);
