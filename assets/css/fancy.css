@@ -87,6 +87,7 @@
   top: 20px;
   right: 20px;
   font-size: 30px;
+  color: rgb(24, 219, 245);
 }
 /* .modal:hover{
   transform: scale(1) !important;
@@ -104,12 +105,12 @@
   transform: scale(1) !important;
 } */
 .popup{
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 100px;
   left: 100px;
   z-index: 100;
-  width: 500px;
+  width: 400px;
   height: 300px;
   border: 1px solid green;
   border-radius: 10px;
