@@ -2398,6 +2398,7 @@ button,
   justify-content: center;
   margin-bottom: 30px;
   position: relative;
+  /* background-color: #2c2b2c; */
 }
 .back_to_top_button{
   width: 40px;

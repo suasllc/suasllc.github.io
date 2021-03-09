@@ -36,7 +36,7 @@
 }
 .hover_options{
   position: absolute;
-  z-index: 10;
+  z-index: 2;
   color: black;
   display: flex;
   justify-content: center;
@@ -52,7 +52,6 @@
   top: calc((100% - 90%)/2);
   right: calc((100% - 90%)/2);
   /* border: 1px solid red; */
-  z-index: 10;
   /* transition: 0.5s ease-in-out; */
 }
 .preview_button{
