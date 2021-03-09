@@ -1,6 +1,8 @@
 My Personal Website https://tonyngo.me
 
-This project uses the following template as a starter. I have customized it using my own CSS3/HTML5 skills to make it fit my own portfolio website.
+This project uses the following template as a starter. I have added 
+a large amount of customization work to it using my own JavScript/CSS3/HTML5 skills 
+to make it much more dynamic and fit my own portfolio website.
 
 
 Editorial by HTML5 UP

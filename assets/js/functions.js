@@ -14,30 +14,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const unitWidth = 110;
   const unitHeight = unitWidth;
   const collapsedTotalHeight = 2 * unitHeight + 0;
-  const instavibesPrevImg = document.querySelector('.prev_img.instavibes');
-  const tripcampPrevImg = document.querySelector('.prev_img.tripcamp');
-  const prevImgs = document.querySelectorAll('.prev_img');
+  const prevImgs = Array.from(document.querySelectorAll('.prev_img'));
   const srcObj = {
-    tripcamp: ['images/tripcamp.png', 'images/tripcamp3.gif', 12000, 12000],
-    dronest: ['images/dronest.png', 'images/dronest4_small.gif', 6000, 18000],
-    instavibes: ['images/instavibes1.jpg', 'images/instavibes.gif', 10000, 14000],
+    tripcamp: ['images/tripcamp.png', 'images/tripcamp3.gif', 6000, 12000],
+    dronest: ['images/dronest.png', 'images/dronest4_small.gif', 22000, 18000],
+    instavibes: ['images/instavibes1.jpg', 'images/instavibes.gif', 34000, 14000],
   };
 
   prevImgs.forEach(prev => {
     const name = prev.classList.toString().split(' ')[1];
-    if(!name) return;
+    if (!name) return;
     const srcs = srcObj[name];
-    let interval = srcs[3];
     setTimeout(() => {
-      prev.src = srcs[1];
+      if (prev.src !== srcs[1]) prev.src = srcs[1];
     }, srcs[2]);
-    setInterval(() => {
-      if (Math.random() > 0.5)
-        prev.src = srcs[0]
-      else {
-        prev.src = srcs[1];
-      }
-    }, interval);
+    setTimeout(() => {
+      prev.src = srcs[0];
+    }, srcs[2] + 15000);
+    // let interval = srcs[3];
+    // setInterval(() => {
+    //   if (Math.random() > 0.5)
+    //     prev.src = srcs[0]
+    //   else {
+    //     prev.src = srcs[1];
+    //   }
+    // }, interval);
   });
 
   if (skills_div) skills_div.style.height = `${collapsedTotalHeight}px`;
@@ -73,12 +74,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
       if (hover_options_div)
         hover_options_div.style.visibility = 'visible';
+      const prevImg = prevImgs.find(img => img.classList.contains(name));
+      if (prevImg) {
+        if (prevImg.src !== srcObj[name][1]) prevImg.src = srcObj[name][1];
+      }
+      prevImgs.filter(img => !img.classList.contains(name))
+        .forEach(img => {
+          const name = img.classList.toString().split(' ')[1];
+          if(name) img.src = srcObj[name][0];
+        });
     });
     div.addEventListener('mouseleave', e => {
       const name = names.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
       if (hover_options_div)
         hover_options_div.style.visibility = 'hidden';
+      const prevImg = prevImgs.find(img => img.classList.contains(name));
+      if (prevImg) {
+        if (prevImg.src !== srcObj[name][0]) prevImg.src = srcObj[name][0];
+      }
     });
   });
   viewFullBtns.forEach(btn => {
