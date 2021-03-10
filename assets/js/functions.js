@@ -242,12 +242,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const types = getTypes();
 
 
-    navdiv.innerHTML = `<div class="profile-posts-nav four" >
-      <a  href="#skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"  id="all_skills" >
+    navdiv.innerHTML = `<div class="skill_tab-nav four" >
+      <a  href="#skills"  class="skill_tab-nav-option"   activeClassName="skill_tab-nav-option-active"  id="all_skills" >
         ALL
       </a>` + types.map(type =>
-      `<a  href="#skills"  class="profile-posts-nav-option" 
-      activeClassName="profile-posts-nav-option-active"  
+      `<a  href="#skills"  class="skill_tab-nav-option" 
+      activeClassName="skill_tab-nav-option-active"  
       id="${type}_skills" >
       ${skillIcon(type)}
       ${skillTabType(type)}
@@ -268,17 +268,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
   function handleSkillTabClick() {
     const types = getTypes();
 
+    const makeOnlyOneTabActive = (type) => {
+      const skill_tabs = document.querySelectorAll('.skill_tab-nav-option');
+      skill_tabs.forEach(tab => {
+        if (tab.id.includes(type)) tab.classList.add('p_active');
+        else tab.classList.remove('p_active');
+      });
+    };
+
     types.forEach(type => {
       const skill_tab = document.getElementById(`${type}_skills`);
       skill_tab.addEventListener('click', e => {
         showOnlyType(type);
         handleExpandCollapse();
+        makeOnlyOneTabActive(type);
       });
     });
     const all_skill_tab = document.getElementById(`all_skills`);
     all_skill_tab.addEventListener('click', e => {
       showOnlyType('all');
       handleExpandCollapse();
+      makeOnlyOneTabActive('all');
     });
 
   }
