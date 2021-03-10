@@ -48,12 +48,15 @@
 .p_active:after {
   content: '';
   width: calc(100% + 2px);
-  height: 7px;
-  background: #f0f0f0;
+  height: 8px;
+  /* background: #f0f0f0; */
   position: absolute;
   bottom: -1px;
   left: -1px;
+  border-left: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
   border-radius: 5px 5px 0px 0px;
+  /* z-index: 10; */
 }
 
 .next_to_active_right{
