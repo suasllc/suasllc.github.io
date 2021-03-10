@@ -1,5 +1,5 @@
 // import { srcs, alts } from './skilldata.js';
-import { skillObjs } from './skilldata.js';
+import { skillObjs, make_data_nodes } from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   populateSkillIcons();
@@ -198,7 +198,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     skillObjs.forEach(el => {
       const article = document.createElement('div');
       article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
-      article.innerHTML = `<img src=${el.src} class='technology-icon ${el.name} ${el.type}' alt=${el.alt} />`;
+      article.innerHTML = `<img src=${el.src} class='technology-icon 
+        ${el.name} ${el.type}' alt=${el.alt} /> <div class="popup"></div>`;
       skills_div.appendChild(article);
     });
   }

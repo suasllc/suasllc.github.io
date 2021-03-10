@@ -80,6 +80,7 @@
 .article_skill{
   background-color: #f0f0f0;
   margin: auto 2px;
+  position: relative;
   /* z-index: 1; */
 }
 .skills_div_class{

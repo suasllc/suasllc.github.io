@@ -1,3 +1,7 @@
+const fs = require('fs');
+
+
+
 // const srcs = [
 //   'images/tech_react.png',
 //   'images/redux.png',
@@ -68,7 +72,7 @@
 // const skillObjs = [];
 // srcs.forEach((el, i) => skillObjs.push({ src: el, alt: alts[i], name: alts[i].replaceAll(' ', '_') }));
 
-export const skillObjs = [
+const skillObjs = [
   {
     src: 'images/tech_react.png',
     alt: 'React',
@@ -288,7 +292,7 @@ export const skillObjs = [
   }
 ];
 
-export const projectObjs = [
+const projectObjs = [
   {
     src: 'images/tripcamp_logo.png',
     alt: 'Tripcamp',
@@ -299,6 +303,12 @@ export const projectObjs = [
     src: 'images/dronest_logo.png',
     alt: 'Dronest',
     name: 'Dronest',
+    type: 'Project',
+  },
+  {
+    src: 'images/dronest_ms_logo.png',
+    alt: 'Dronest Messenger Server',
+    name: 'Dronest Messenger Server',
     type: 'Project',
   },
   {
@@ -325,10 +335,16 @@ export const projectObjs = [
     name: 'VuIRZoom',
     type: 'Project',
   },
-];
+  {
+    src: 'images/tonyngo_me.png',
+    alt: 'TonyNgo.me',
+    name: 'TonyNgo.me',
+    type: 'Project',
+  },
+]
 
 
-export function make_data_nodes() {
+function make_data_nodes() {
   let nodes = skillObjs.map(el => ({
     id: el.name,
     height: 50,
@@ -353,6 +369,8 @@ export function make_data_nodes() {
   return JSON.stringify({nodes, edges});
 }
 
+
+// make_data_nodes();
 // nodes: [{ "id": "Lannister" }]
 // edges: [{ "from": "Lannister", "to": "Tully" }]
 // console.log(skillObjs);
