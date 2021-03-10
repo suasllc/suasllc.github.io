@@ -340,8 +340,14 @@ export const projectObjs = [
 ];
 
 
-export function make_data_nodes() {
-  let nodes = skillObjs.map(el => ({
+export function make_data_nodes(type) {
+  let skillObjsCopy = [...skillObjs];
+  let nodes = [];
+  if(type !== 'all') {
+    skillObjsCopy = skillObjsCopy.filter(el => el.type === type);
+  }
+  
+  nodes = skillObjsCopy.map(el => ({
     id: el.name,
     height: 50,
     fill: {
@@ -360,11 +366,10 @@ export function make_data_nodes() {
     }))
   )
   let edges = [];
-  skillObjs.forEach(el => el.links.forEach(e => edges.push({
+  skillObjsCopy.forEach(el => el.links.forEach(e => edges.push({
     from: e,
     to: el.name,
   })));
-  console.log('nodes', nodes);
   return {nodes, edges};
 }
 export function make_data_nodes_JSON() {

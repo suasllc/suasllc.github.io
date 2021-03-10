@@ -25,6 +25,7 @@
   position: relative;
   box-sizing: border-box !important;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .skill_tab-nav-option svg {
@@ -32,8 +33,8 @@
   font-size: 16px;
 }
 
-.skill_tab-nav-option:active:hover {
-  color: rgb(219, 219, 219);
+.skill_tab-nav-option:hover {
+  color: #0F5FA6;
 }
 
 .skill_tab-nav-option-active, .p_active {

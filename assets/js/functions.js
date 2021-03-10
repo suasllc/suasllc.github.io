@@ -2,6 +2,9 @@
 import { skillObjs, make_data_nodes } from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  let graphMode = false;
+  let skillType = 'all';
+
   populateSkillIcons();
   addSkillNav();
 
@@ -271,7 +274,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const types = getTypes();
 
     const makeOnlyOneTabActive = (type) => {
-      const skill_tabs = document.querySelectorAll('.skill_tab-nav-option');
+      const skill_tabs = Array.from(document.querySelectorAll('.skill_tab-nav-option'))
+        .filter(e => !e.classList.contains('graph'));
       let currentActiveIndex = 0;
       const nextToActive = [];
       skill_tabs.forEach((tab, i) => {
@@ -305,6 +309,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         showOnlyType(type);
         handleExpandCollapse();
         makeOnlyOneTabActive(type);
+        skillType = type;
+        if(graphMode) showGraph(skillType);
       });
     });
     const all_skill_tab = document.getElementById(`all_skills`);
@@ -312,6 +318,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
       showOnlyType('all');
       handleExpandCollapse();
       makeOnlyOneTabActive('all');
+      skillType = 'all';
+      if(graphMode) showGraph('all');
     });
 
   }
@@ -328,12 +336,42 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-    var chart = anychart.graph(make_data_nodes());
+  const listView = document.getElementById('skill_tab_list');
+  const graphView = document.getElementById('skill_tab_graph');
+  listView.addEventListener('click', e => {
+    listView.classList.add('p_active');
+    // graphView.classList.add('next_to_active_right');
+    graphView.classList.remove('p_active', 'next_to_active_left');
+    graphMode = false;
+    deleteGraph();
+    populateSkillIcons();
+  });
+  graphView.addEventListener('click', e => {
+    graphView.classList.add('p_active');
+    // listView.classList.add('next_to_active_right');
+    listView.classList.remove('p_active', 'next_to_active_left');
+    graphMode = true;
+    removeSkills();
+    showGraph(skillType);
+  });
+
+  function deleteGraph(){
+    const skills_graph_div = document.getElementById('skills_graph');
+    if(skills_graph_div) {
+      skills_graph_div.innerHTML = "";
+      skills_graph_div.style = "";
+    }
+  }
+  function showGraph(type) {
+    deleteGraph();
+    const skills_graph_div = document.getElementById('skills_graph');
+    var chart = anychart.graph(make_data_nodes(type));
     // set the title
     chart.title("Skills - Projects Network");
-    const skills_graph_div = document.getElementById('skills_graph');
-    skills_graph_div.style = "height: 500px; width: 100%; border-radius: 10px; overflow: hidden;";
+    // skills_graph_div.setAttribute('id','skills_graph');
+    skills_graph_div.setAttribute('style', "margin-top: -10px; height: 500px; width: 100%; border-radius: 10px; overflow: hidden;");
     // draw the chart
     chart.container("skills_graph").draw();
-  // });
+  }
+  // showGraph();
 });
