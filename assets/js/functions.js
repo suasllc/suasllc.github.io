@@ -191,80 +191,105 @@ document.addEventListener('DOMContentLoaded', (event) => {
       window.location.href = "/#";
     });
   });
-});
-
-function populateSkillIcons() {
-  const skills_div = document.getElementById('skills_div');
-  skillObjs.forEach(el => {
-    const article = document.createElement('div');
-    article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
-    article.innerHTML = `<img src=${el.src} class='technology-icon ${el.name} ${el.type}' alt=${el.alt} />`;
-    skills_div.appendChild(article);
-  });
-}
-
-function removeSkills(type) {
-  const skills_div = document.getElementById('skills_div');
-  skills_div.innerHTML = "";
-}
 
 
-function addSkillNav() {
-  const skills_nav_div = document.getElementById('skills_nav_div');
-  const navdiv = document.createElement('div');
-  const types = getTypes();
+  function populateSkillIcons() {
+    const skills_div = document.getElementById('skills_div');
+    skillObjs.forEach(el => {
+      const article = document.createElement('div');
+      article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
+      article.innerHTML = `<img src=${el.src} class='technology-icon ${el.name} ${el.type}' alt=${el.alt} />`;
+      skills_div.appendChild(article);
+    });
+  }
 
-  navdiv.innerHTML = '<div class="profile-posts-nav four" >\
-  <a  href="#skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"  id="all_skills" >\
-    All\
-  </a>' + types.map(type =>
-    `<a  href="#skills"  class="profile-posts-nav-option" 
+  function removeSkills(type) {
+    const skills_div = document.getElementById('skills_div');
+    skills_div.innerHTML = "";
+  }
+
+  function skillIcon(type) {
+    const style = 'style="margin-right: 2px;"'
+    switch (type) {
+      case 'All':
+        return '';
+      case 'Library':
+        return `<i class="fas fa-cubes" ${style}></i>`;
+      case 'Language':
+        return `<i class="fas fa-code" ${style}></i>`;
+      case 'Framework':
+        return `<i class="fas fa-database" ${style}></i>`;
+      case 'IDE':
+        return `<i class="fas fa-laptop-code" ${style}></i>`;
+      case 'OS':
+        return `<i class="fab fa-ubuntu" ${style}></i>`;
+      case 'Hardware':
+        return `<i class="fas fa-microchip" ${style}></i>`;
+      case 'Service':
+        return `<i class="fab fa-aws" ${style}></i>`;
+      default:
+        return '';
+    }
+  }
+
+  function addSkillNav() {
+    const skills_nav_div = document.getElementById('skills_nav_div');
+    const navdiv = document.createElement('div');
+    const types = getTypes();
+
+
+    navdiv.innerHTML = `<div class="profile-posts-nav four" >
+      <a  href="#skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"  id="all_skills" >
+        ALL
+      </a>` + types.map(type =>
+      `<a  href="#skills"  class="profile-posts-nav-option" 
       activeClassName="profile-posts-nav-option-active"  
       id="${type}_skills" >
+      ${skillIcon(type)}
       ${type.toUpperCase()}
     </a>`).join('') + '</div>';
-  skills_nav_div.appendChild(navdiv);
-  handleSkillTabClick();
-}
+    skills_nav_div.appendChild(navdiv);
+    handleSkillTabClick();
+  }
 
-function getTypes() {
-  const typeSet = new Set();
-  skillObjs.forEach(el => {
-    if (!typeSet.has(el.type)) typeSet.add(el.type);
-  });
-  const types = Array.from(typeSet);
-  return types;
-}
-
-function handleSkillTabClick() {
-  const types = getTypes();
-
-  types.forEach(type => {
-    const skill_tab = document.getElementById(`${type}_skills`);
-    skill_tab.addEventListener('click', e => {
-      showOnlyType(type);
-      // handleExpandCollapse();
+  function getTypes() {
+    const typeSet = new Set();
+    skillObjs.forEach(el => {
+      if (!typeSet.has(el.type)) typeSet.add(el.type);
     });
-  });
-  const all_skill_tab = document.getElementById(`all_skills`);
-  all_skill_tab.addEventListener('click', e => {
-    showOnlyType('all');
-    // handleExpandCollapse();
-  });
+    const types = Array.from(typeSet);
+    return types;
+  }
 
-}
-function showOnlyType(type) {
-  const articles = document.querySelectorAll('.article_skill');
-  articles.forEach(a => {
-    if ((type === 'all') || (a.classList.contains(type))) {
-      a.classList.add('shown_block');
-      a.classList.remove('hidden');
-    } else {
-      a.classList.add('hidden');
-      a.classList.remove('shown_block');
-    }
-  });
-}
+  function handleSkillTabClick() {
+    const types = getTypes();
+
+    types.forEach(type => {
+      const skill_tab = document.getElementById(`${type}_skills`);
+      skill_tab.addEventListener('click', e => {
+        showOnlyType(type);
+        handleExpandCollapse();
+      });
+    });
+    const all_skill_tab = document.getElementById(`all_skills`);
+    all_skill_tab.addEventListener('click', e => {
+      showOnlyType('all');
+      handleExpandCollapse();
+    });
+
+  }
+  function showOnlyType(type) {
+    const articles = document.querySelectorAll('.article_skill');
+    articles.forEach(a => {
+      if ((type === 'all') || (a.classList.contains(type))) {
+        a.classList.add('shown_block');
+        a.classList.remove('hidden');
+      } else {
+        a.classList.add('hidden');
+        a.classList.remove('shown_block');
+      }
+    });
+  }
   /*
 // const skillObjs = [];
 // srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
@@ -275,3 +300,4 @@ function showOnlyType(type) {
       </div> -->
     </article>
 */
+});
