@@ -327,22 +327,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
     });
   }
-  /*
-// const skillObjs = [];
-// srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
-    <article>
-      <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
-      <!-- <div class="content">
-        <h3>Sed magna finibus</h3>
-      </div> -->
-    </article>
-*/
-  anychart.onDocumentReady(function () {
-    // create a chart from the loaded data
+
     var chart = anychart.graph(make_data_nodes());
     // set the title
     chart.title("Skills - Projects Network");
+    const skills_graph_div = document.getElementById('skills_graph');
+    skills_graph_div.style = "height: 500px; width: 100%; border-radius: 10px; overflow: hidden;";
     // draw the chart
     chart.container("skills_graph").draw();
-  });
+  // });
 });
