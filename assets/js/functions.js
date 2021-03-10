@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   }
 
   function skillIcon(type) {
-    const style = 'style="margin-right: 2px;"'
+    const style = 'style="margin-right: 0px;"'
     switch (type) {
       case 'All':
         return '';
@@ -243,10 +243,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
     navdiv.innerHTML = `<div class="skill_tab-nav four" >
-      <a  href="#skills"  class="skill_tab-nav-option"   activeClassName="skill_tab-nav-option-active"  id="all_skills" >
+      <a href="#skills" class="skill_tab-nav-option p_active" activeClassName="skill_tab-nav-option-active"  id="all_skills" >
         ALL
-      </a>` + types.map(type =>
-      `<a  href="#skills"  class="skill_tab-nav-option" 
+      </a>` + types.map((type, i) =>
+      `<a  href="#skills"  class="skill_tab-nav-option 
+      ${i === 0 ? 'next_to_active_left' : ''}" 
       activeClassName="skill_tab-nav-option-active"  
       id="${type}_skills" >
       ${skillIcon(type)}
@@ -270,9 +271,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const makeOnlyOneTabActive = (type) => {
       const skill_tabs = document.querySelectorAll('.skill_tab-nav-option');
-      skill_tabs.forEach(tab => {
-        if (tab.id.includes(type)) tab.classList.add('p_active');
-        else tab.classList.remove('p_active');
+      let currentActiveIndex = 0;
+      const nextToActive = [];
+      skill_tabs.forEach((tab, i) => {
+        if (tab.id.includes(type)) {
+          tab.classList.add('p_active');
+          tab.classList.remove('next_to_active_right', 'next_to_active_left');
+          currentActiveIndex = i;
+          if (currentActiveIndex === 0) nextToActive.push(1);
+          else if (currentActiveIndex === skill_tabs.length - 1) nextToActive.push(currentActiveIndex - 1)
+          else {
+            nextToActive.push(currentActiveIndex - 1);
+            nextToActive.push(currentActiveIndex + 1);
+          }
+        }
+        else {
+          tab.classList.remove('p_active', 'next_to_active_right', 'next_to_active_left');
+        }
+      });
+
+      nextToActive.forEach(index => {
+        if (index < currentActiveIndex)
+          skill_tabs[index].classList.add('next_to_active_right');
+        else
+          skill_tabs[index].classList.add('next_to_active_left');
       });
     };
 
