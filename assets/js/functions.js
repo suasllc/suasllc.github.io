@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const numberOfIcons = () => document.querySelectorAll('#skills div.shown_block').length;
   const numerOfIconsPerRow = () => Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
   const numberOfRowsNeeded = () => Math.ceil(numberOfIcons() / numerOfIconsPerRow());
-  const expandedTotalHeight = () => numberOfRowsNeeded() * unitHeight + 0;
+  const expandedTotalHeight = () => numberOfRowsNeeded() * unitHeight + 10;
   const collapsedTotalHeight = () => (numberOfRowsNeeded() < 2 ? numberOfRowsNeeded() : 2) * unitHeight + 0;
 
   const prevImgs = Array.from(document.querySelectorAll('.prev_img'));

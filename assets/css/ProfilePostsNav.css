@@ -45,7 +45,7 @@
   border-radius: 5px 5px 0px 0px;
   box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
 }
-.p_active:after {
+.p_active::after {
   content: '';
   width: calc(100% + 2px);
   height: 8px;
@@ -56,6 +56,7 @@
   border-left: 1px solid #f0f0f0;
   border-right: 1px solid #f0f0f0;
   border-radius: 5px 5px 0px 0px;
+  mix-blend-mode: overlay;
   /* z-index: 10; */
 }
 
