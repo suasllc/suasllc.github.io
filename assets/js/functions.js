@@ -16,10 +16,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const viewFullBtns = Array.from(document.querySelectorAll('.preview_button.full'));
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
-  const numberOfIcons = () => document.querySelectorAll('#skills div.shown_block').length;
+
   const unitWidth = 110;
   const unitHeight = unitWidth;
-  const collapsedTotalHeight = 2 * unitHeight + 0;
+  const margin = () => {
+    if (window.innerWidth > 1680) return 6 * 16;
+    if (window.innerWidth > 1280) return 5 * 16;
+    if (window.innerWidth > 736) return 4 * 16;
+    return 2 * 16;
+  }
+  const numberOfIcons = () => document.querySelectorAll('#skills div.shown_block').length;
+  const numerOfIconsPerRow = () => Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
+  const numberOfRowsNeeded = () => Math.ceil(numberOfIcons() / numerOfIconsPerRow());
+  const expandedTotalHeight = () => numberOfRowsNeeded() * unitHeight + 0;
+  const collapsedTotalHeight = () => (numberOfRowsNeeded() < 2 ? numberOfRowsNeeded() : 2) * unitHeight + 0;
+
   const prevImgs = Array.from(document.querySelectorAll('.prev_img'));
   const srcObj = {
     tripcamp: ['images/tripcamp.png', 'images/tripcamp3.gif', 6000, 12000],
@@ -68,25 +79,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // }, interval);
   });
 
-  if (skills_div) skills_div.style.height = `${collapsedTotalHeight}px`;
+  if (skills_div) skills_div.style.height = `${collapsedTotalHeight()}px`;
 
   let handleExpandCollapse = () => {
-    const margin = () => {
-      if (window.innerWidth > 1680) return 6 * 16;
-      if (window.innerWidth > 1280) return 5 * 16;
-      if (window.innerWidth > 736) return 4 * 16;
-      return 2 * 16;
-    }
-
-    const numerOfIconsPerRow = Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
-    const numberOfRowsNeeded = Math.ceil(numberOfIcons() / numerOfIconsPerRow);
-    const expandedTotalHeight = numberOfRowsNeeded * unitHeight + 0;
-
     if (more_skills_expanded) {
-      skills_div.style.height = `${expandedTotalHeight}px`;
+      skills_div.style.height = `${expandedTotalHeight()}px`;
       more_skills.classList.add('up');
     } else {
-      skills_div.style.height = `${collapsedTotalHeight}px`;
+      skills_div.style.height = `${collapsedTotalHeight()}px`;
       more_skills.classList.remove('up');
     }
   };
@@ -238,25 +238,25 @@ function getTypes() {
 
 function handleSkillTabClick() {
   const types = getTypes();
-  
+
   types.forEach(type => {
-    const skill_tab = document.getElementById(`${type}_skills`); 
-    // console.log('skill_tab', skill_tab);
+    const skill_tab = document.getElementById(`${type}_skills`);
     skill_tab.addEventListener('click', e => {
       showOnlyType(type);
+      // handleExpandCollapse();
     });
   });
   const all_skill_tab = document.getElementById(`all_skills`);
   all_skill_tab.addEventListener('click', e => {
-    console.log('all_skill_tab', all_skill_tab);
     showOnlyType('all');
+    // handleExpandCollapse();
   });
 
 }
-function showOnlyType(type){
+function showOnlyType(type) {
   const articles = document.querySelectorAll('.article_skill');
   articles.forEach(a => {
-    if((type === 'all') || (a.classList.contains(type))){
+    if ((type === 'all') || (a.classList.contains(type))) {
       a.classList.add('shown_block');
       a.classList.remove('hidden');
     } else {
@@ -268,10 +268,10 @@ function showOnlyType(type){
   /*
 // const skillObjs = [];
 // srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
-      <article>
-        <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
-        <!-- <div class="content">
-          <h3>Sed magna finibus</h3>
-        </div> -->
-      </article>
+    <article>
+      <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
+      <!-- <div class="content">
+        <h3>Sed magna finibus</h3>
+      </div> -->
+    </article>
 */
