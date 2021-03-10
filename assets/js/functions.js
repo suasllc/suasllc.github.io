@@ -232,6 +232,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   }
 
+  function skillTabType(type) {
+    return `<span class="shown_if_width_900plus">${type.toUpperCase()}</span>`;
+  }
+
   function addSkillNav() {
     const skills_nav_div = document.getElementById('skills_nav_div');
     const navdiv = document.createElement('div');
@@ -246,7 +250,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       activeClassName="profile-posts-nav-option-active"  
       id="${type}_skills" >
       ${skillIcon(type)}
-      ${type.toUpperCase()}
+      ${skillTabType(type)}
     </a>`).join('') + '</div>';
     skills_nav_div.appendChild(navdiv);
     handleSkillTabClick();

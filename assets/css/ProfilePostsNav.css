@@ -50,4 +50,9 @@
   justify-content: center !important;
   align-items: center !important;
 }
-
+.shown_if_width_900plus{
+  display: block;
+}
+@media screen and (max-width: 900px) {
+  .shown_if_width_900plus {
+    display: none; } }
