@@ -345,6 +345,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     graphMode = false;
     deleteGraph();
     populateSkillIcons();
+    handleExpandCollapse();
   });
   graphView.addEventListener('click', e => {
     graphView.classList.add('p_active');
@@ -353,6 +354,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     graphMode = true;
     removeSkills();
     showGraph(skillType);
+    handleExpandCollapse();
   });
 
   function deleteGraph(){

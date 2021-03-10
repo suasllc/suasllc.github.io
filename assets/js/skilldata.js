@@ -285,7 +285,7 @@ export const skillObjs = [
     name: 'OpenCV',
     type: 'Library',
     links: ['VuIRZoom', 'VuIRHD', 'Others'],
-  }
+  }, 
 ];
 
 export const projectObjs = [
@@ -301,6 +301,14 @@ export const projectObjs = [
     src: 'images/dronest_logo.png',
     alt: 'Dronest',
     name: 'Dronest',
+    type: 'Project',
+    x: 200,
+    y: 10,    
+  },
+  {
+    src: 'images/dronest_logo.png',
+    alt: 'Dronest Messenger Server',
+    name: 'Dronest Messenger Server',
     type: 'Project',
     x: 200,
     y: 10,    
@@ -337,19 +345,37 @@ export const projectObjs = [
     x: 350,
     y: 150,    
   },
+  {
+    src: 'images/tonyngo_me_logo.png',
+    alt: 'TonyNgo.me',
+    name: 'TonyNgo.me',
+    type: 'Project',
+    x: 400,
+    y: 150,
+  },   
+  {
+    src: 'images/others.png',
+    alt: 'Others',
+    name: 'Others',
+    type: 'Project',
+    x: 400,
+    y: 150,
+  },   
 ];
 
 
 export function make_data_nodes(type) {
   let skillObjsCopy = [...skillObjs];
   let nodes = [];
+  let sizes = [30, 60];
   if(type !== 'all') {
     skillObjsCopy = skillObjsCopy.filter(el => el.type === type);
+    sizes = [60, 30];
   }
   
   nodes = skillObjsCopy.map(el => ({
     id: el.name,
-    height: 50,
+    height: sizes[0],
     fill: {
       src: el.src,
     }
@@ -357,7 +383,7 @@ export function make_data_nodes(type) {
   nodes = nodes.concat(
     projectObjs.map(el => ({
       id: el.name,
-      height: 100,
+      height: sizes[1],
       fill: {
         src: el.src,
       },
