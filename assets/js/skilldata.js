@@ -121,7 +121,7 @@ export const skillObjs = [
     src: 'images/android-icon.png',
     alt: 'Android Developer',
     name: 'Android Developer',
-    type: 'Badge',
+    type: 'IDE',
   },
   {
     src: 'images/qt.jpg',
@@ -139,7 +139,7 @@ export const skillObjs = [
     src: 'images/postgresql.png',
     alt: 'PostgreSQL',
     name: 'PostgreSQL',
-    type: 'System',
+    type: 'Framework',
   },
   {
     src: 'images/flask.png',
@@ -151,7 +151,7 @@ export const skillObjs = [
     src: 'images/flask-sqlalchemy-logo.png',
     alt: 'SqlAlchemy',
     name: 'SqlAlchemy',
-    type: 'Module',
+    type: 'Library',
   },
   {
     src: 'images/aws.png',
@@ -163,7 +163,7 @@ export const skillObjs = [
     src: 'images/docker.png',
     alt: 'Docker',
     name: 'Docker',
-    type: 'Platform'
+    type: 'Framework'
   },
   {
     src: 'images/heroku.svg',
@@ -175,37 +175,37 @@ export const skillObjs = [
     src: 'images/node-js-icon-8.jpg',
     alt: 'Node.js Node NodeJS',
     name: 'NodeJS',
-    type: 'Environment',
+    type: 'Framework',
   },
   {
     src: 'images/websocket.jpeg',
     alt: 'Websocket',
     name: 'Websocket',
-    type: 'Technology',
+    type: 'Framework',
   },
   {
     src: 'images/Sequelize-icon.png',
     alt: 'Sequelize',
     name: 'Sequelize',
-    type: 'Module',
+    type: 'Library',
   },
   {
     src: 'images/expressjs.png',
     alt: 'ExpressJS Express',
     name: 'Express',
-    type: 'Module',
+    type: 'Library',
   },
   {
     src: 'images/npm.png',
     alt: 'NPM',
     name: 'NPM',
-    type: 'Package Manager',
+    type: 'Framework',
   },
   {
     src: 'images/pipenv.png',
     alt: 'PipEnv',
     name: 'PipEnv',
-    type: 'Package Manager',
+    type: 'Framework',
   },
   {
     src: 'images/css3.png',
@@ -229,19 +229,19 @@ export const skillObjs = [
     src: 'images/arduino.png',
     alt: 'Arduino',
     name: 'Arduino',
-    type: 'Hardware/Software',
+    type: 'Hardware',
   },
   {
     src: 'images/raspberrypi.png',
     alt: 'Raspberry Pi single board computer SBC',
     name: 'Raspberry Pi/SBC',
-    type: 'Hardware/Software',
+    type: 'Hardware',
   },
   {
     src: 'images/autoinventor.png',
     alt: 'AutoDesk Inventor 3D',
     name: 'AutoDesk Inventor/CAD',
-    type: 'Application',
+    type: 'IDE',
   },
   {
     src: 'images/ros.png',

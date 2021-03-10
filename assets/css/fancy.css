@@ -82,6 +82,9 @@
 .shown_flex{
   display: flex;
 }
+.shown_block{
+  display: block;
+}
 .x_close{
   position: absolute;
   top: 20px;

@@ -2,8 +2,8 @@
 import { skillObjs } from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  addSkillNav();
   populateSkillIcons();
+  addSkillNav();
 
   const more_skills = document.getElementById('more_skills');
   const skills_div = document.getElementById('skills_div');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const viewFullBtns = Array.from(document.querySelectorAll('.preview_button.full'));
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
-  const numberOfIcons = document.querySelectorAll('#skills article').length;
+  const numberOfIcons = () => document.querySelectorAll('#skills div.shown_block').length;
   const unitWidth = 110;
   const unitHeight = unitWidth;
   const collapsedTotalHeight = 2 * unitHeight + 0;
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     const numerOfIconsPerRow = Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
-    const numberOfRowsNeeded = Math.ceil(numberOfIcons / numerOfIconsPerRow);
+    const numberOfRowsNeeded = Math.ceil(numberOfIcons() / numerOfIconsPerRow);
     const expandedTotalHeight = numberOfRowsNeeded * unitHeight + 0;
 
     if (more_skills_expanded) {
@@ -196,13 +196,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function populateSkillIcons() {
   const skills_div = document.getElementById('skills_div');
   skillObjs.forEach(el => {
-    const article = document.createElement('article');
-    article.innerHTML = `<img src=${el.src} class='technology-icon Redux' alt=${el.alt} />`;
+    const article = document.createElement('div');
+    article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
+    article.innerHTML = `<img src=${el.src} class='technology-icon ${el.name} ${el.type}' alt=${el.alt} />`;
     skills_div.appendChild(article);
   });
 }
 
-function removeSkills() {
+function removeSkills(type) {
   const skills_div = document.getElementById('skills_div');
   skills_div.innerHTML = "";
 }
@@ -211,27 +212,66 @@ function removeSkills() {
 function addSkillNav() {
   const skills_nav_div = document.getElementById('skills_nav_div');
   const navdiv = document.createElement('div');
-  navdiv.innerHTML =
-    '<div class="profile-posts-nav four" > \
-    <a  href="/skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"   >\
-      ALL\
-    </a>\
-    <a  href="/skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"   >\
-      LANGUAGES\
-    </a>\
-    <a  href="/skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"   >\
-      MODULES\
-    </a>\
-  </div>';
+  const types = getTypes();
+
+  navdiv.innerHTML = '<div class="profile-posts-nav four" >\
+  <a  href="#skills"  class="profile-posts-nav-option"   activeClassName="profile-posts-nav-option-active"  id="all_skills" >\
+    All\
+  </a>' + types.map(type =>
+    `<a  href="#skills"  class="profile-posts-nav-option" 
+      activeClassName="profile-posts-nav-option-active"  
+      id="${type}_skills" >
+      ${type.toUpperCase()}
+    </a>`).join('') + '</div>';
   skills_nav_div.appendChild(navdiv);
+  handleSkillTabClick();
+}
+
+function getTypes() {
+  const typeSet = new Set();
+  skillObjs.forEach(el => {
+    if (!typeSet.has(el.type)) typeSet.add(el.type);
+  });
+  const types = Array.from(typeSet);
+  return types;
+}
+
+function handleSkillTabClick() {
+  const types = getTypes();
+  
+  types.forEach(type => {
+    const skill_tab = document.getElementById(`${type}_skills`); 
+    // console.log('skill_tab', skill_tab);
+    skill_tab.addEventListener('click', e => {
+      showOnlyType(type);
+    });
+  });
+  const all_skill_tab = document.getElementById(`all_skills`);
+  all_skill_tab.addEventListener('click', e => {
+    console.log('all_skill_tab', all_skill_tab);
+    showOnlyType('all');
+  });
+
+}
+function showOnlyType(type){
+  const articles = document.querySelectorAll('.article_skill');
+  articles.forEach(a => {
+    if((type === 'all') || (a.classList.contains(type))){
+      a.classList.add('shown_block');
+      a.classList.remove('hidden');
+    } else {
+      a.classList.add('hidden');
+      a.classList.remove('shown_block');
+    }
+  });
 }
   /*
 // const skillObjs = [];
 // srcs.forEach((el, i) => skillObjs.push({src: el, alt: alts[i], name: alts[i].replaceAll(' ','_')}));
-        <article>
-          <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
-          <!-- <div class="content">
-            <h3>Sed magna finibus</h3>
-          </div> -->
-        </article>
+      <article>
+        <img src='images/redux.png' class='technology-icon Redux' alt="Redux" />
+        <!-- <div class="content">
+          <h3>Sed magna finibus</h3>
+        </div> -->
+      </article>
 */
