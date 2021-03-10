@@ -294,36 +294,48 @@ export const projectObjs = [
     alt: 'Tripcamp',
     name: 'Tripcamp',
     type: 'Project',
+    x: 50,
+    y: 10,
   },
   {
     src: 'images/dronest_logo.png',
     alt: 'Dronest',
     name: 'Dronest',
     type: 'Project',
+    x: 200,
+    y: 10,    
   },
   {
     src: 'images/instavibes_logo.png',
     alt: 'Instavibes',
     name: 'Instavibes',
     type: 'Project',
+    x: 350,
+    y: 10,    
   },
   {
     src: 'images/vuirhd1_logo.png',
     alt: 'VuIR HD',
     name: 'VuIRHD',
     type: 'Project',
+    x: 50,
+    y: 150,    
   },
   {
     src: 'images/forgetmenotes_logo.png',
     alt: 'Forget Me Notes',
     name: 'Forget Me Notes',
     type: 'Project',
+    x: 200,
+    y: 150,    
   },
   {
     src: 'images/VuIRZoom_logo.png',
     alt: 'VuIRZoom',
     name: 'VuIRZoom',
     type: 'Project',
+    x: 350,
+    y: 150,    
   },
 ];
 
@@ -342,7 +354,9 @@ export function make_data_nodes() {
       height: 100,
       fill: {
         src: el.src,
-      }
+      },
+      x: el.x,
+      y: el.y,
     }))
   )
   let edges = [];
@@ -350,7 +364,11 @@ export function make_data_nodes() {
     from: e,
     to: el.name,
   })));
-  return JSON.stringify({nodes, edges});
+  console.log('nodes', nodes);
+  return {nodes, edges};
+}
+export function make_data_nodes_JSON() {
+  return JSON.stringify(make_data_nodes());
 }
 
 // nodes: [{ "id": "Lannister" }]

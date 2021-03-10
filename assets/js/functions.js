@@ -337,4 +337,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
       </div> -->
     </article>
 */
+  anychart.onDocumentReady(function () {
+    // create a chart from the loaded data
+    var chart = anychart.graph(make_data_nodes());
+    // set the title
+    chart.title("Skills - Projects Network");
+    // draw the chart
+    chart.container("skills_graph").draw();
+  });
 });

@@ -366,11 +366,16 @@ function make_data_nodes() {
     from: e,
     to: el.name,
   })));
+
+  fs.writeFile('files/skill_graph_data.json', JSON.stringify({nodes, edges}), function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
   return JSON.stringify({nodes, edges});
 }
 
 
-// make_data_nodes();
+make_data_nodes();
 // nodes: [{ "id": "Lannister" }]
 // edges: [{ "from": "Lannister", "to": "Tully" }]
 // console.log(skillObjs);
