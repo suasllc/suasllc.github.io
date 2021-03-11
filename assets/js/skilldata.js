@@ -285,7 +285,7 @@ export const skillObjs = [
     name: 'OpenCV',
     type: 'Library',
     links: ['VuIRZoom', 'VuIRHD', 'Others'],
-  }, 
+  },
 ];
 
 export const projectObjs = [
@@ -303,7 +303,7 @@ export const projectObjs = [
     name: 'Dronest',
     type: 'Project',
     x: 200,
-    y: 10,    
+    y: 10,
   },
   {
     src: 'images/dronest_logo.png',
@@ -311,7 +311,7 @@ export const projectObjs = [
     name: 'Dronest Messenger Server',
     type: 'Project',
     x: 200,
-    y: 10,    
+    y: 10,
   },
   {
     src: 'images/instavibes_logo.png',
@@ -319,7 +319,7 @@ export const projectObjs = [
     name: 'Instavibes',
     type: 'Project',
     x: 350,
-    y: 10,    
+    y: 10,
   },
   {
     src: 'images/vuirhd1_logo.png',
@@ -327,7 +327,7 @@ export const projectObjs = [
     name: 'VuIRHD',
     type: 'Project',
     x: 50,
-    y: 150,    
+    y: 150,
   },
   {
     src: 'images/forgetmenotes_logo.png',
@@ -335,7 +335,7 @@ export const projectObjs = [
     name: 'Forget Me Notes',
     type: 'Project',
     x: 200,
-    y: 150,    
+    y: 150,
   },
   {
     src: 'images/VuIRZoom_logo.png',
@@ -343,7 +343,7 @@ export const projectObjs = [
     name: 'VuIRZoom',
     type: 'Project',
     x: 350,
-    y: 150,    
+    y: 150,
   },
   {
     src: 'images/tonyngo_me_logo.png',
@@ -352,7 +352,7 @@ export const projectObjs = [
     type: 'Project',
     x: 400,
     y: 150,
-  },   
+  },
   {
     src: 'images/others.png',
     alt: 'Others',
@@ -360,19 +360,36 @@ export const projectObjs = [
     type: 'Project',
     x: 400,
     y: 150,
-  },   
+  },
 ];
 
+const memo = {};
 
 export function make_data_nodes(type) {
+  if (memo[type]) {
+    return memo[type];
+  }
+
   let skillObjsCopy = [...skillObjs];
-  let nodes = [];
   let sizes = [30, 60];
-  if(type !== 'all') {
+  if (type !== 'all') {
     skillObjsCopy = skillObjsCopy.filter(el => el.type === type);
     sizes = [60, 30];
   }
-  
+
+  let nodes = [];
+  let edges = [];
+  skillObjsCopy.forEach(el => el.links.forEach(e => edges.push({
+    from: e,
+    to: el.name,
+  })));
+
+  let connectedNodes = new Set();
+  edges.forEach(el => {
+    connectedNodes.add(el.from);
+    connectedNodes.add(el.to);
+  });
+
   nodes = skillObjsCopy.map(el => ({
     id: el.name,
     height: sizes[0],
@@ -381,22 +398,20 @@ export function make_data_nodes(type) {
     }
   }));
   nodes = nodes.concat(
-    projectObjs.map(el => ({
-      id: el.name,
-      height: sizes[1],
-      fill: {
-        src: el.src,
-      },
-      x: el.x,
-      y: el.y,
-    }))
+    projectObjs.filter(el => connectedNodes.has(el.name))
+      .map(el => ({
+        id: el.name,
+        height: sizes[1],
+        fill: {
+          src: el.src,
+        },
+        x: el.x,
+        y: el.y,
+      }))
   )
-  let edges = [];
-  skillObjsCopy.forEach(el => el.links.forEach(e => edges.push({
-    from: e,
-    to: el.name,
-  })));
-  return {nodes, edges};
+
+  memo[type] = { nodes, edges };
+  return { nodes, edges };
 }
 export function make_data_nodes_JSON() {
   return JSON.stringify(make_data_nodes());
