@@ -1360,8 +1360,12 @@ ul.icons {
   list-style: none;
   padding-left: 0; }
   ul.icons li {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     display: inline-block;
-    padding: 0 1em 0 0; }
+    border-radius: 5px;
+    padding: 0.1em 0.3em 0.0em 0.3em;
+    background-color: #e0e0e0;
+    margin: 2px 1em 4px 0; }
     ul.icons li:last-child {
       padding-right: 0; }
     ul.icons li .icon {
@@ -1824,7 +1828,7 @@ button,
   }
   @media screen and (max-width: 480px) {
     ul.icons li{
-      font-size: 10.5px;
+      font-size: 10px;
     }
     .posts {
       margin: 0 0 2em 0;
@@ -2231,6 +2235,7 @@ button,
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
+  margin-top: -30px;
   display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
@@ -2411,8 +2416,8 @@ button,
   /* background-color: #2c2b2c; */
 }
 .back_to_top_button{
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
   position: absolute;
   border-radius: 50%;
