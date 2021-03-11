@@ -340,8 +340,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const graphView = document.getElementById('skill_tab_graph');
   listView.addEventListener('click', e => {
     listView.classList.add('p_active');
-    // graphView.classList.add('next_to_active_right');
-    graphView.classList.remove('p_active', 'next_to_active_left');
+    listView.classList.remove('next_to_active_right');
+    graphView.classList.add('next_to_active_left');
+    graphView.classList.remove('p_active');
     graphMode = false;
     deleteGraph();
     populateSkillIcons();
@@ -349,8 +350,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
   graphView.addEventListener('click', e => {
     graphView.classList.add('p_active');
-    // listView.classList.add('next_to_active_right');
-    listView.classList.remove('p_active', 'next_to_active_left');
+    graphView.classList.remove('next_to_active_left');
+    listView.classList.add('next_to_active_right');
+    listView.classList.remove('p_active');
     graphMode = true;
     removeSkills();
     showGraph(skillType);

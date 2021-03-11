@@ -28,6 +28,7 @@
   cursor: pointer;
 }
 
+
 .skill_tab-nav-option svg {
   margin-right: 5px;
   font-size: 16px;
@@ -45,6 +46,7 @@
   border-bottom: none;
   border-radius: 5px 5px 0px 0px;
   box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #bff0f0;
 }
 .p_active::after {
   content: '';
@@ -60,12 +62,19 @@
   mix-blend-mode: overlay;
   /* z-index: 10; */
 }
+.graph{
+  font-size: 18px;
+  background-color: #e0f0f0;
+}
+.p_active.graph{
+  background-color: #bff0f0;
+}
 
 .next_to_active_right{
-  border-radius: 0px 0px 5px 0px;
+  border-radius: 5px 5px 5px 0px;
 }
 .next_to_active_left{
-  border-radius: 0px 0px 0px 5px;
+  border-radius: 5px 5px 0px 5px;
 }
 .next_to_active_right,
 .next_to_active_left{
@@ -89,6 +98,12 @@
   justify-content: center !important;
   align-items: center !important;
 }
+
+.list_network{
+  margin-top: -80px !important; 
+  margin-bottom: 30px;
+}
+
 .shown_if_width_900plus{
   display: block;
   margin-left: 2px;
@@ -96,3 +111,10 @@
 @media screen and (max-width: 900px) {
   .shown_if_width_900plus {
     display: none; } }
+
+@media screen and (max-width: 580px) {
+  .list_network{
+    margin-top: -35px !important; 
+    margin-bottom: 30px;
+  }
+}
