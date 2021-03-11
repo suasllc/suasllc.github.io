@@ -374,7 +374,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // set the title
     chart.title().useHtml(true);
     chart.title("<b>Projects-Skills Connection Network</b>" + "<br>" +
-      "Illustration of the connections between my skills and my projects");
+      "Illustration of the connections between my skills and my projects" 
+      + "<br>" + "This shows how my skills have actually been utilized"
+      );
     // skills_graph_div.setAttribute('id','skills_graph');
     skills_graph_div.setAttribute('style', 
       `margin-top: -10px;

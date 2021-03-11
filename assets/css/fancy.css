@@ -73,6 +73,10 @@
 .preview_button:hover{
   background-color: rgba(9, 24, 31, 0.719);
 }
+.preview{
+  box-shadow: -11.31px 11.31px 17px 0px rgba(138,131,124,0.23), 11.31px 11.31px 17px 0px rgba(138,131,124,0.23);
+}
+
 .hover_options{
   visibility: hidden;
 }

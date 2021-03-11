@@ -63,11 +63,11 @@
   /* z-index: 10; */
 }
 .graph{
-  font-size: 18px;
-  background-color: #e0f0f0;
+  font-size: 15px;
+  background-color: #e0f0ff;
 }
 .p_active.graph{
-  background-color: #bff0f0;
+  background-color: #bff0ff;
 }
 
 .next_to_active_right{
