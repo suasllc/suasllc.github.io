@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
 
-  const unitWidth = 110;
+  const unitWidth = 114;
   const unitHeight = unitWidth;
   const margin = () => {
     if (window.innerWidth > 1680) return 6 * 16;

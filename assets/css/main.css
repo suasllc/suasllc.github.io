@@ -1361,7 +1361,7 @@ ul.icons {
   padding-left: 0; }
   ul.icons li {
     display: inline-block;
-    padding: 0 1em 0 0; }
+    padding: 0 0.5em 0 0; }
     ul.icons li:last-child {
       padding-right: 0; }
     ul.icons li .icon {
@@ -1817,7 +1817,15 @@ button,
           width: calc(100% + 4.5em); }
         .posts article:nth-last-child(3) {
           margin-bottom: 4.5em; } }
+  @media screen and (max-width: 700px) {
+    ul.icons li{
+      font-size: 12px;
+    }
+  }
   @media screen and (max-width: 480px) {
+    ul.icons li{
+      font-size: 10.5px;
+    }
     .posts {
       margin: 0 0 2em 0;
       width: 100%; }
@@ -2129,9 +2137,10 @@ button,
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	box-shadow: -11.31px 11.31px 17px 0px rgba(138,131,124,0.23);
+	box-shadow: -11.31px 11.31px 17px 0px rgba(138,131,124,0.23), 11.31px 11.31px 17px 0px rgba(138,131,124,0.23);
   margin: auto 35px;
-	/* border-radius: 10px; */
+	border-radius: 10px;
+  overflow: hidden;
 }
 .name-and-title-div{
 	display: flex;
