@@ -364,16 +364,37 @@ document.addEventListener('DOMContentLoaded', (event) => {
       skills_graph_div.style = "";
     }
   }
+  let interval;
   function showGraph(type) {
     deleteGraph();
     const skills_graph_div = document.getElementById('skills_graph');
     var chart = anychart.graph(make_data_nodes(type));
     // set the title
-    chart.title("Skills - Projects Network");
+    chart.title().useHtml(true);
+    chart.title("<b>Projects-Skills Connection Network</b>" + "<br>" +
+      "Illustration of the connections between my skills and my projects");
     // skills_graph_div.setAttribute('id','skills_graph');
-    skills_graph_div.setAttribute('style', "margin-top: -10px; height: 500px; width: 100%; border-radius: 10px; overflow: hidden;");
+    skills_graph_div.setAttribute('style', 
+      `margin-top: -10px;
+      height: 500px;
+      width: 100%;
+      max-height: calc(width);
+      border-radius: 10px;
+      background-color: #f0f0f0;
+      overflow: hidden;`
+    );
     // draw the chart
+    chart.layout().type("fixed");
     chart.container("skills_graph").draw();
+    let fixed = true;
+    if(interval) {
+      clearInterval(interval);
+    }
+    interval = setInterval(() => {
+      fixed = !fixed;
+      if(fixed) chart.layout().type("fixed");
+      else chart.layout().type("forced");
+    }, 5000);
   }
   // showGraph();
 });

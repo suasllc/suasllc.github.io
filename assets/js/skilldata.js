@@ -95,7 +95,7 @@ export const skillObjs = [
     alt: 'C++',
     name: 'C++',
     type: 'Language',
-    links: ['VuIRHD', 'VuIRZoom', 'Others'],
+    links: ['VuIRHD', 'VuIRZoom', 'Research Articles', 'Others'],
   },
   {
     src: 'images/python.jpg',
@@ -249,7 +249,7 @@ export const skillObjs = [
     alt: 'Ubuntu Linux',
     name: 'Ubuntu/Linux',
     type: "OS",
-    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me'],
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles'],
   },
   {
     src: 'images/arduino.png',
@@ -306,7 +306,7 @@ export const projectObjs = [
     y: 10,
   },
   {
-    src: 'images/dronest_logo.png',
+    src: 'images/dronestms_logo.png',
     alt: 'Dronest Messenger Server',
     name: 'Dronest Messenger Server',
     type: 'Project',
@@ -354,6 +354,14 @@ export const projectObjs = [
     y: 150,
   },
   {
+    src: 'images/scientificarticle.png',
+    alt: 'Research Articles',
+    name: 'Research Articles',
+    type: 'Project',
+    x: 400,
+    y: 150,
+  },
+  {
     src: 'images/others.png',
     alt: 'Others',
     name: 'Others',
@@ -371,7 +379,7 @@ export function make_data_nodes(type) {
   }
 
   let skillObjsCopy = [...skillObjs];
-  let sizes = [30, 60];
+  let sizes = [30, 80];
   if (type !== 'all') {
     skillObjsCopy = skillObjsCopy.filter(el => el.type === type);
     sizes = [60, 30];
@@ -390,23 +398,31 @@ export function make_data_nodes(type) {
     connectedNodes.add(el.to);
   });
 
-  nodes = skillObjsCopy.map(el => ({
+  const numberOfSkills = skillObjsCopy.length;
+  const width = 500, projectWidth = width + 100;
+  const height = 200, projectHeight = height + 400;
+  const columns = 8, projectColumns = 5;
+  const rows = Math.ceil(numberOfSkills / columns);
+  const projectRows = Math.ceil(projectObjs.length / projectColumns)
+  nodes = skillObjsCopy.map((el, i) => ({
     id: el.name,
     height: sizes[0],
     fill: {
       src: el.src,
-    }
+    },
+    x: Math.floor(width / columns) * (i % columns),
+    y: Math.floor(height / rows) * Math.floor(i / columns),
   }));
   nodes = nodes.concat(
     projectObjs.filter(el => connectedNodes.has(el.name))
-      .map(el => ({
+      .map((el, i) => ({
         id: el.name,
         height: sizes[1],
         fill: {
           src: el.src,
         },
-        x: el.x,
-        y: el.y,
+        x: Math.floor(projectWidth / projectColumns) * (i % projectColumns) - 20,
+        y: Math.floor(projectHeight / projectRows) * Math.floor(i / projectColumns) - 80,
       }))
   )
 
