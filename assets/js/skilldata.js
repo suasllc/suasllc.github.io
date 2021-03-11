@@ -379,10 +379,10 @@ export function make_data_nodes(type) {
   }
 
   let skillObjsCopy = [...skillObjs];
-  let sizes = [30, 80];
+  let sizes = [35, 70];
   if (type !== 'all') {
     skillObjsCopy = skillObjsCopy.filter(el => el.type === type);
-    sizes = [60, 30];
+    sizes = [80, 60];
   }
 
   let nodes = [];

@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       fixed = !fixed;
       if(fixed) chart.layout().type("fixed");
       else chart.layout().type("forced");
-    }, 5000);
+    }, 8000);
   }
   // showGraph();
 });
