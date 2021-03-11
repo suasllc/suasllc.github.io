@@ -132,3 +132,13 @@
   /* opacity: 0.8; */
   /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
 }
+.graph_control_div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  top: 20px; 
+  z-index: 10;
+}

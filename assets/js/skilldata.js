@@ -252,6 +252,27 @@ export const skillObjs = [
     links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles'],
   },
   {
+    src: 'images/github3.png',
+    alt: 'Github',
+    name: 'Github',
+    type: "Service",
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles'],
+  },
+  {
+    src: 'images/linux.png',
+    alt: 'Linux',
+    name: 'Linux',
+    type: "OS",
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles', "Others"],
+  },
+  {
+    src: 'images/vscode.jpg',
+    alt: 'Visual Studio Code',
+    name: 'Visual Studio Code',
+    type: "IDE",
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'TonyNgo.me'],
+  },
+  {
     src: 'images/arduino.png',
     alt: 'Arduino',
     name: 'Arduino',

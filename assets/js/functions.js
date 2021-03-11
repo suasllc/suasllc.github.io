@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         handleExpandCollapse();
         makeOnlyOneTabActive(type);
         skillType = type;
-        if(graphMode) showGraph(skillType);
+        if (graphMode) showGraph(skillType);
       });
     });
     const all_skill_tab = document.getElementById(`all_skills`);
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       handleExpandCollapse();
       makeOnlyOneTabActive('all');
       skillType = 'all';
-      if(graphMode) showGraph('all');
+      if (graphMode) showGraph('all');
     });
 
   }
@@ -359,9 +359,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     handleExpandCollapse();
   });
 
-  function deleteGraph(){
+  function deleteGraph() {
     const skills_graph_div = document.getElementById('skills_graph');
-    if(skills_graph_div) {
+    if (skills_graph_div) {
       skills_graph_div.innerHTML = "";
       skills_graph_div.style = "";
     }
@@ -374,31 +374,53 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // set the title
     chart.title().useHtml(true);
     chart.title("<b>Projects-Skills Connection Network</b>" + "<br>" +
-      "Illustration of the connections between my skills and my projects" 
-      + "<br>" + "This shows how my skills have actually been utilized"
-      );
+      "Illustration of the connections between my skills and my projects"
+      + "<br>" + "This shows how my skills have actually been utilized");
     // skills_graph_div.setAttribute('id','skills_graph');
-    skills_graph_div.setAttribute('style', 
+    skills_graph_div.setAttribute('style',
       `margin-top: -10px;
       height: 500px;
       width: 100%;
       max-height: calc(width);
       border-radius: 10px;
       background-color: #f0f0f0;
+      position: relative;
       overflow: hidden;`
     );
+    const layoutType = (lotype) => {
+      chart.layout().type(lotype);
+    }
+    const controlDiv = document.createElement('div');
+    controlDiv.classList.add('graph_control_div');
+    controlDiv.innerHTML = `<label class="button equal_width" id="cluster_lo" name="type">Forced Layout</label>
+    <label id="grid_lo" class="button equal_width" name="type">Fixed Layout</label>`;
+    skills_graph_div.appendChild(controlDiv);
+
     // draw the chart
     chart.layout().type("fixed");
     chart.container("skills_graph").draw();
-    let fixed = true;
-    if(interval) {
-      clearInterval(interval);
+    // let fixed = true;
+    // if (interval) {
+    //   clearInterval(interval);
+    // }
+    // interval = setInterval(() => {
+    //   fixed = !fixed;
+    //   if (fixed) chart.layout().type("fixed");
+    //   else chart.layout().type("forced");
+    // }, 8000);
+    const cluster = document.getElementById('cluster_lo');
+    const gridlo = document.getElementById('grid_lo');
+    if (cluster) {
+      cluster.addEventListener('click', e => {
+        console.log(cluster, gridlo);
+        layoutType('forced');
+      });
     }
-    interval = setInterval(() => {
-      fixed = !fixed;
-      if(fixed) chart.layout().type("fixed");
-      else chart.layout().type("forced");
-    }, 8000);
+    if (gridlo) {
+      gridlo.addEventListener('click', e => {
+        layoutType('fixed');
+      });
+    }
   }
   // showGraph();
 });
