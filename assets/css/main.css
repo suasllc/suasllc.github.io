@@ -1360,12 +1360,14 @@ ul.icons {
   list-style: none;
   padding-left: 0; }
   ul.icons li {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
     display: inline-block;
     border-radius: 5px;
-    padding: 0.1em 0.3em 0.0em 0.3em;
-    background-color: #e0e0e0;
-    margin: 2px 1em 4px 0; }
+    /* padding: 0.1em 0.3em 0.0em 0.3em; */
+    /* background-color: #e0e0e0; */
+    /* margin: 2px 1em 4px 0;  */
+    margin: 0 0.5em 0 0; 
+  }
     ul.icons li:last-child {
       padding-right: 0; }
     ul.icons li .icon {
