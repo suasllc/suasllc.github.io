@@ -435,25 +435,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // chart.layout().iterationCount(0);
     // configure the visual settings of edges
     chart.edges().normal().stroke("#000000", 0);//, "5 5", "round");
-    chart.edges().hovered().stroke("#0F5FA6", 1, "10 5", "round");
+    chart.edges().hovered().stroke("#ff781e", 1, "10 5");
     chart.edges().selected().stroke("#0F5FA6", 1);
     const projectNodes = getProjectNodes(graphData);
     let playing = true;
     let showEdges = true;
     let selectingInterval;
-    chart.container("skills_graph").draw(true); //Asynchronous drawing
+    chart.container("skills_graph").draw(); //Asynchronous drawing
 
-    // const projects = chart.group('project');
-
-    // let fixed = true;
-    // if (interval) {
-    //   clearInterval(interval);
-    // }
-    // interval = setInterval(() => {
-    //   fixed = !fixed;
-    //   if (fixed) chart.layout().type("fixed");
-    //   else chart.layout().type("forced");
-    // }, 8000);
     const cluster = document.getElementById('cluster_lo');
     const gridlo = document.getElementById('grid_lo');
     const zoomin = document.getElementById('zoomin');
@@ -466,62 +455,38 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     setPlayPause();
 
-    if (cluster) {
-      cluster.addEventListener('click', e => {
-        layoutType('forced');
-      });
-    }
-    if (gridlo) {
-      gridlo.addEventListener('click', e => {
-        layoutType('fixed');
-      });
-    }
-    if (zoomin) {
-      zoomin.addEventListener('click', e => {
-        chart.zoomIn();
-      });
-    }
-    if (zoomout) {
-      zoomout.addEventListener('click', e => {
-        chart.zoomOut();
-      });
-    }
-    if (fitscreen) {
-      fitscreen.addEventListener('click', e => {
-        chart.fit();
-      });
-    }
-    if (playPause) {
-      playPause.addEventListener('click', e => {
-        playing = !playing;
-        if (playing) {
-          ppicon.className = 'fas fa-pause';
-          tooltiptext.innerText = "Click to Pause";
-        } else {
-          ppicon.className = 'fas fa-play';
-          tooltiptext.innerText = "Play Animation";
-        }
-        setPlayPause();
-      });
-    }
-    if (showhideedges) {
-      const showhideedgesicon = document.getElementById('showhideedgesicon');
-      const showhideedgestext = document.getElementById('showhideedgestext');
-      showhideedges.addEventListener('click', e => {
-        showEdges = !showEdges;
-        if (showEdges) {
-          chart.edges().normal().stroke("#0F5FA6", 1, "5 5", "round");
-          projectNodes.forEach(node => chart.select(node.id));
-          showhideedgesicon.src = "images/disconnected.png";
-          showhideedgestext.innerText = "Click to HIDE edges";
-        } else {
-          chart.edges().normal().stroke("#0F5FA6", 0);
-          projectNodes.forEach(node => chart.unselect(node.id));
-          showhideedgesicon.src = "images/connected.png";
-          showhideedgestext.innerText = "Click to SHOW edges";
-        }
-      });
-    }
+    cluster.addEventListener('click', _ => layoutType('forced'));
+    gridlo.addEventListener('click', _ => layoutType('fixed'));
+    zoomin.addEventListener('click', _ => chart.zoomIn());
+    zoomout.addEventListener('click', _ => chart.zoomOut());
+    fitscreen.addEventListener('click', _ => chart.fit());
+    playPause.addEventListener('click', e => {
+      playing = !playing;
+      if (playing) {
+        ppicon.className = 'fas fa-pause';
+        tooltiptext.innerText = "Click to Pause";
+      } else {
+        ppicon.className = 'fas fa-play';
+        tooltiptext.innerText = "Play Animation";
+      }
+      setPlayPause();
+    });
+    const showhideedgesicon = document.getElementById('showhideedgesicon');
+    const showhideedgestext = document.getElementById('showhideedgestext');
+    showhideedges.addEventListener('click', e => {
+      showEdges = !showEdges;
+      if (showEdges) {
+        // chart.edges().normal().stroke("#0F5FA6", 1, "5 2");
+        chart.select(projectNodes);
+        showhideedgesicon.src = "images/disconnected.png";
+        showhideedgestext.innerText = "Click to HIDE edges";
+      } else {
+        // chart.edges().normal().stroke("#0F5FA6", 0);
+        chart.unselect(projectNodes);
+        showhideedgesicon.src = "images/connected.png";
+        showhideedgestext.innerText = "Click to SHOW edges";
+      }
+    });
     function setPlayPause() {
       if (!playing) {
         showhideedges.disabled = false;
@@ -529,7 +494,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
       let index = 0;
       let round = 0;
-      chart.edges().selected().stroke("#0F5FA6", 1);
+      chart.unselect(projectNodes);
       showhideedges.disabled = true;
       selectingInterval = setInterval(() => {
         if (index >= projectNodes.length) {
@@ -543,14 +508,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
             showhideedges.disabled = false;
           }
         }
-        chart.select(projectNodes[index].id);
+        chart.select(projectNodes[index]);
         if (round < 2) {
           let iToClear = (index === 0) ? projectNodes.length - 1 : index - 1;
-          chart.unselect(projectNodes[iToClear].id);
+          chart.unselect(projectNodes[iToClear]);
         }
         index++;
       }, 400);
     }
   }
-  // showGraph();
+  function switchLayout() {
+    let fixed = true;
+    if (interval) {
+      clearInterval(interval);
+    }
+    interval = setInterval(() => {
+      fixed = !fixed;
+      if (fixed) chart.layout().type("fixed");
+      else chart.layout().type("forced");
+    }, 8000);
+  }
 });

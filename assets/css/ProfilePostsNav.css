@@ -155,6 +155,7 @@
   color: rgba(0, 0, 0, 0.747) !important;
   margin: 4px 2px;
   position: relative;
+  /* color: #ff781e; */
 }
 .button.small.icon{
   font-size: 18px;

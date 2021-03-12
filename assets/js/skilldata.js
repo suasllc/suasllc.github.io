@@ -395,7 +395,7 @@ export const projectObjs = [
 const memo = {};
 
 export function getProjectNodes(data) {
-  return data.nodes.filter(node => node.group === 'project');
+  return data.nodes.filter(node => node.group === 'project').map(node => node.id);
 }
 
 export function make_data_nodes(type) {
