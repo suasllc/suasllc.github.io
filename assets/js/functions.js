@@ -442,7 +442,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let showEdges = true;
     let selectingInterval;
     chart.container("skills_graph").draw(true); //Asynchronous drawing
-    setPlayPause();
 
     // const projects = chart.group('project');
 
@@ -464,6 +463,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const showhideedges = document.getElementById('showhideedges');
     const ppicon = document.getElementById('playpauseicon');
     const tooltiptext = document.getElementById('playpausetext');
+
+    setPlayPause();
+
     if (cluster) {
       cluster.addEventListener('click', e => {
         layoutType('forced');
