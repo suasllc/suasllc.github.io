@@ -2147,7 +2147,7 @@ button,
 	align-items: center;
 	box-shadow: -11.31px 11.31px 17px 0px rgba(138,131,124,0.23), 11.31px 11.31px 17px 0px rgba(138,131,124,0.23);
   margin: auto 35px;
-	border-radius: 10px;
+	border-radius: 5px;
   overflow: hidden;
 }
 .name-and-title-div{
