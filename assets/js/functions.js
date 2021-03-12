@@ -506,6 +506,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             ppicon.className = 'fas fa-play';
             tooltiptext.innerText = "Play Animation";
             showhideedges.disabled = false;
+            showEdges = true;
+            showhideedgesicon.src = "images/disconnected.png";
+            showhideedgestext.innerText = "Click to HIDE edges";            
           }
         }
         chart.select(projectNodes[index]);
