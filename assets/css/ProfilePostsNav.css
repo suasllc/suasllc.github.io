@@ -177,13 +177,16 @@
   text-transform: capitalize;
   font-size: 12px;
   /* border: 1px solid rgba(13, 135, 151, 1); */
-  background-color: #83f1e238;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.199);
+  background-color: #0000007e;
+  /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.199); */
   padding: 2px 10px;
   height: 30px;
   /* display: flex; */
   justify-content: center;
   align-items: center;
+  color: white;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .tooltip_small:hover .tooltip_small_text{
   display: flex;

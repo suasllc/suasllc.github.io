@@ -415,6 +415,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
       <i class="fas fa-expand"></i>
       <div class="tooltip_small"><div class="tooltip_small_text">Fit Window</div></div>
     </label>
+    <label class="button small icon equal_width" id="playpause" name="type">
+      <i class="fas fa-pause" id="playpauseicon"></i>
+      <div class="tooltip_small"><div class="tooltip_small_text" id="playpausetext">Play Animation</div></div>
+    </label>
+    <label class="button small icon equal_width" id="showhideedges" name="type">
+      <img id="showhideedgesicon" src="images/connected.png" width="19px" height="19px"/>
+      <div class="tooltip_small"><div class="tooltip_small_text" id="showhideedgestext">Click to HIDE edges</div></div>
+    </label>
     `;
     skills_graph_div.appendChild(controlDiv);
 
@@ -426,28 +434,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     chart.layout().type("fixed");
     // chart.layout().iterationCount(0);
     // configure the visual settings of edges
-    chart.edges().normal().stroke("#000000", 0, "5 5", "round");
+    chart.edges().normal().stroke("#000000", 0);//, "5 5", "round");
     chart.edges().hovered().stroke("#0F5FA6", 1, "10 5", "round");
     chart.edges().selected().stroke("#0F5FA6", 1);
     const projectNodes = getProjectNodes(graphData);
-    let index = 0;
-    let round = 0;
-    let selectingInterval = setInterval(() => {
-      if (index >= projectNodes.length) {
-        index = 0;
-        round++;
-        if (round >= 3) clearInterval(selectingInterval);
-      }
-      chart.select(projectNodes[index].id);
-      if (round < 2) {
-        projectNodes.forEach((node, i) => {
-          if (i !== index)
-            chart.unselect(node.id);
-        });
-      }
-      index++;
-    }, 400);
+    let playing = true;
+    let showEdges = true;
+    let selectingInterval;
     chart.container("skills_graph").draw();
+    // setPlayPause();
 
     // const projects = chart.group('project');
 
@@ -465,6 +460,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const zoomin = document.getElementById('zoomin');
     const zoomout = document.getElementById('zoomout');
     const fitscreen = document.getElementById('fitscreen');
+    const playPause = document.getElementById('playpause');
+    const showhideedges = document.getElementById('showhideedges');
     if (cluster) {
       cluster.addEventListener('click', e => {
         layoutType('forced');
@@ -489,6 +486,60 @@ document.addEventListener('DOMContentLoaded', (event) => {
       fitscreen.addEventListener('click', e => {
         chart.fit();
       });
+    }
+    if (playPause) {
+      const ppicon = document.getElementById('playpauseicon');
+      const tooltiptext = document.getElementById('playpausetext');
+      playPause.addEventListener('click', e => {
+        playing = !playing;
+        if (playing) {
+          ppicon.className = 'fas fa-pause';
+          tooltiptext.innerText = "Click to Pause";
+        } else {
+          ppicon.className = 'fas fa-play';
+          tooltiptext.innerText = "Play Animation";
+        }
+        setPlayPause();
+      });
+    }
+    if(showhideedges){
+      const showhideedgesicon = document.getElementById('showhideedgesicon');
+      const showhideedgestext = document.getElementById('showhideedgestext');     
+      showhideedges.addEventListener('click', e => {
+        showEdges = !showEdges;
+        if(showEdges){
+          chart.edges().normal().stroke("#0F5FA6", 1);
+          // chart.edges().selected().stroke("#0F5FA6", 1);
+          showhideedgesicon.src = "images/disconnected.png";
+          showhideedgestext.innerText = "Click to HIDE edges";
+        } else {
+          chart.edges().normal().stroke("#0F5FA6", 0);
+          // chart.edges().selected().stroke("#0F5FA6", 0);
+          showhideedgesicon.src = "images/connected.png";
+          showhideedgestext.innerText = "Click to SHOW edges";
+        }
+      });
+    }
+    function setPlayPause() {
+      if(!playing) return clearInterval(selectingInterval);
+      let index = 0;
+      let round = 0;
+      chart.edges().selected().stroke("#0F5FA6", 1);
+      selectingInterval = setInterval(() => {
+        if (index >= projectNodes.length) {
+          index = 0;
+          round++;
+          if (round >= 3) clearInterval(selectingInterval);
+        }
+        chart.select(projectNodes[index].id);
+        if (round < 2) {
+          projectNodes.forEach((node, i) => {
+            if (i !== index)
+              chart.unselect(node.id);
+          });
+        }
+        index++;
+      }, 400);
     }
   }
   // showGraph();
