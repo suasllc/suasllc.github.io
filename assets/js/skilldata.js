@@ -394,6 +394,10 @@ export const projectObjs = [
 
 const memo = {};
 
+export function getProjectNodes(data) {
+  return data.nodes.filter(node => node.group === 'project');
+}
+
 export function make_data_nodes(type) {
   if (memo[type]) {
     return memo[type];
@@ -444,6 +448,7 @@ export function make_data_nodes(type) {
         },
         x: Math.floor(projectWidth / projectColumns) * (i % projectColumns) - 20,
         y: Math.floor(projectHeight / projectRows) * Math.floor(i / projectColumns) - 80,
+        group: 'project',
       }))
   )
 

@@ -1,5 +1,5 @@
 // import { srcs, alts } from './skilldata.js';
-import { skillObjs, make_data_nodes } from './skilldata.js';
+import { skillObjs, make_data_nodes, getProjectNodes } from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   let graphMode = false;
@@ -370,7 +370,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   function showGraph(type) {
     deleteGraph();
     const skills_graph_div = document.getElementById('skills_graph');
-    var chart = anychart.graph(make_data_nodes(type));
+    const graphData = make_data_nodes(type);
+    const chart = anychart.graph();
+    chart.data(graphData);
     // set the title
     chart.title().useHtml(true);
     chart.title("<b>Projects-Skills Connection Network</b>" + "<br>" +
@@ -392,8 +394,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     const controlDiv = document.createElement('div');
     controlDiv.classList.add('graph_control_div');
-    controlDiv.innerHTML = 
-    `<label id="grid_lo" class="button small icon equal_width" name="type">
+    controlDiv.innerHTML =
+      `<label id="grid_lo" class="button small icon equal_width" name="type">
       <i class="fas fa-th"></i>
       <div class="tooltip_small"><div class="tooltip_small_text">Grid View</div></div>
     </label>
@@ -423,7 +425,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // draw the chart
     chart.layout().type("fixed");
     // chart.layout().iterationCount(0);
+    // configure the visual settings of edges
+    chart.edges().normal().stroke("#000000", 0, "5 5", "round");
+    chart.edges().hovered().stroke("#0F5FA6", 1, "10 5", "round");
+    chart.edges().selected().stroke("#0F5FA6", 1);
+    const projectNodes = getProjectNodes(graphData);
+    let index = 0;
+    let round = 0;
+    let selectingInterval = setInterval(() => {
+      if (index >= projectNodes.length) {
+        index = 0;
+        round++;
+        if (round >= 3) clearInterval(selectingInterval);
+      }
+      chart.select(projectNodes[index].id);
+      if (round < 2) {
+        projectNodes.forEach((node, i) => {
+          if (i !== index)
+            chart.unselect(node.id);
+        });
+      }
+      index++;
+    }, 400);
     chart.container("skills_graph").draw();
+
+    // const projects = chart.group('project');
 
     // let fixed = true;
     // if (interval) {
