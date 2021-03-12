@@ -159,6 +159,10 @@
 .button.small.icon{
   font-size: 18px;
 }
+.button.small.icon:active,
+.button.small.icon:focus{
+  outline: none !important;
+}
 .tooltip_small{
   position: absolute;
   bottom: 0px;

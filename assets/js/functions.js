@@ -419,10 +419,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       <i class="fas fa-pause" id="playpauseicon"></i>
       <div class="tooltip_small"><div class="tooltip_small_text" id="playpausetext">Play Animation</div></div>
     </label>
-    <label class="button small icon equal_width" id="showhideedges" name="type">
+    <button class="button small icon equal_width" id="showhideedges" name="type">
       <img id="showhideedgesicon" src="images/connected.png" width="19px" height="19px"/>
       <div class="tooltip_small"><div class="tooltip_small_text" id="showhideedgestext">Click to HIDE edges</div></div>
-    </label>
+    </button>
     `;
     skills_graph_div.appendChild(controlDiv);
 
@@ -462,6 +462,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const fitscreen = document.getElementById('fitscreen');
     const playPause = document.getElementById('playpause');
     const showhideedges = document.getElementById('showhideedges');
+    const ppicon = document.getElementById('playpauseicon');
+    const tooltiptext = document.getElementById('playpausetext');
     if (cluster) {
       cluster.addEventListener('click', e => {
         layoutType('forced');
@@ -488,8 +490,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
     }
     if (playPause) {
-      const ppicon = document.getElementById('playpauseicon');
-      const tooltiptext = document.getElementById('playpausetext');
       playPause.addEventListener('click', e => {
         playing = !playing;
         if (playing) {
@@ -522,18 +522,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     function setPlayPause() {
       if (!playing) {
-        showhideedges.disable = false;
+        showhideedges.disabled = false;
         return clearInterval(selectingInterval);
       }
       let index = 0;
       let round = 0;
       chart.edges().selected().stroke("#0F5FA6", 1);
-      showhideedges.disable = true;
+      showhideedges.disabled = true;
       selectingInterval = setInterval(() => {
         if (index >= projectNodes.length) {
           index = 0;
           round++;
-          if (round >= 3) clearInterval(selectingInterval);
+          if (round >= 3) {
+            clearInterval(selectingInterval);
+            playing = false;
+            ppicon.className = 'fas fa-play';
+            tooltiptext.innerText = "Play Animation";
+            showhideedges.disabled = false;
+          }
         }
         chart.select(projectNodes[index].id);
         if (round < 2) {
