@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let playing = true;
     let showEdges = true;
     let selectingInterval;
-    chart.container("skills_graph").draw();
+    chart.container("skills_graph").draw(true); //Asynchronous drawing
     // setPlayPause();
 
     // const projects = chart.group('project');
@@ -502,29 +502,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setPlayPause();
       });
     }
-    if(showhideedges){
+    if (showhideedges) {
       const showhideedgesicon = document.getElementById('showhideedgesicon');
-      const showhideedgestext = document.getElementById('showhideedgestext');     
+      const showhideedgestext = document.getElementById('showhideedgestext');
       showhideedges.addEventListener('click', e => {
         showEdges = !showEdges;
-        if(showEdges){
-          chart.edges().normal().stroke("#0F5FA6", 1);
-          // chart.edges().selected().stroke("#0F5FA6", 1);
+        if (showEdges) {
+          chart.edges().normal().stroke("#0F5FA6", 1, "5 5", "round");
+          projectNodes.forEach(node => chart.select(node.id));
           showhideedgesicon.src = "images/disconnected.png";
           showhideedgestext.innerText = "Click to HIDE edges";
         } else {
           chart.edges().normal().stroke("#0F5FA6", 0);
-          // chart.edges().selected().stroke("#0F5FA6", 0);
+          projectNodes.forEach(node => chart.unselect(node.id));
           showhideedgesicon.src = "images/connected.png";
           showhideedgestext.innerText = "Click to SHOW edges";
         }
       });
     }
     function setPlayPause() {
-      if(!playing) return clearInterval(selectingInterval);
+      if (!playing) {
+        showhideedges.disable = false;
+        return clearInterval(selectingInterval);
+      }
       let index = 0;
       let round = 0;
       chart.edges().selected().stroke("#0F5FA6", 1);
+      showhideedges.disable = true;
       selectingInterval = setInterval(() => {
         if (index >= projectNodes.length) {
           index = 0;
@@ -533,10 +537,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
         chart.select(projectNodes[index].id);
         if (round < 2) {
-          projectNodes.forEach((node, i) => {
-            if (i !== index)
-              chart.unselect(node.id);
-          });
+          let iToClear = (index === 0) ? projectNodes.length - 1 : index - 1;
+          chart.unselect(projectNodes[iToClear].id);
         }
         index++;
       }, 400);
