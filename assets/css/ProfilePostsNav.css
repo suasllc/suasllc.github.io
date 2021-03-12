@@ -47,6 +47,7 @@
   border-radius: 5px 5px 0px 0px;
   box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
   background-color: #bff0f0;
+  cursor: default;
 }
 .p_active::after {
   content: '';
@@ -197,3 +198,32 @@
   display: flex;
   /* visibility: visible; */
 }
+.project_skills_div{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.skills_column_div{
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 110px;
+  margin: auto 5px;
+}
+.project_header_div{
+  border-bottom: 2px solid #0F5FA6;
+}
+.project_header_div img{
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+.technology-icon.small{
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin: 2px 2px;
+}
+

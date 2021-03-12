@@ -88,63 +88,63 @@ export const skillObjs = [
     alt: 'JavaScript',
     name: 'JavaScript',
     type: 'Language',
-    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom'],
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIR_Zoom'],
   },
   {
     src: 'images/c__.png',
     alt: 'C++',
     name: 'C++',
     type: 'Language',
-    links: ['VuIRHD', 'VuIRZoom', 'Research Articles', 'Others'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Research Articles', 'Others'],
   },
   {
     src: 'images/python.jpg',
     alt: 'Python',
     name: 'Python',
     type: 'Language',
-    links: ['VuIRHD', 'VuIRZoom', 'Dronest', 'Instavibes'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Dronest', 'Instavibes'],
   },
   {
     src: 'images/java.png',
     alt: 'Java',
     name: 'Java',
     type: 'Language',
-    links: ['VuIRHD', 'VuIRZoom', 'Tripcamp'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Tripcamp'],
   },
   {
     src: 'images/c.png',
     alt: 'C',
     name: 'C',
     type: 'Language',
-    links: ['VuIRHD', 'Research Articles'],
+    links: ['VuIRHD1', 'Research Articles'],
   },
   {
     src: 'images/android-studio.png',
     alt: 'Android Studio XML',
     name: 'Android Studio',
     type: 'IDE',
-    links: ['VuIRHD', 'VuIRZoom', 'Tripcamp'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Tripcamp'],
   },
   {
     src: 'images/android-icon.png',
     alt: 'Android Developer',
     name: 'Android Developer',
     type: 'IDE',
-    links: ['VuIRHD', 'VuIRZoom', 'Tripcamp'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Tripcamp'],
   },
   {
     src: 'images/qt.jpg',
     alt: 'Qt QtCreator',
     name: 'Qt/QtCreator',
     type: 'IDE',
-    links: ['VuIRHD', 'VuIRZoom', 'Others'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Others'],
   },
   {
     src: 'images/qml.png',
     alt: 'QML',
     name: 'QML',
     type: 'Language',
-    links: ['VuIRHD', 'VuIRZoom', 'Others'],
+    links: ['VuIRHD1', 'VuIR_Zoom', 'Others'],
   },
   {
     src: 'images/postgresql.png',
@@ -249,21 +249,21 @@ export const skillObjs = [
     alt: 'Ubuntu Linux',
     name: 'Ubuntu/Linux',
     type: "OS",
-    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles'],
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIR_Zoom', 'VuIRHD1', 'TonyNgo.me', 'Research Articles'],
   },
   {
     src: 'images/github3.png',
     alt: 'Github',
     name: 'Github',
     type: "Service",
-    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles'],
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIR_Zoom', 'VuIRHD1', 'TonyNgo.me', 'Research Articles'],
   },
   {
     src: 'images/linux.png',
     alt: 'Linux',
     name: 'Linux',
     type: "OS",
-    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIRZoom', 'VuIRHD', 'TonyNgo.me', 'Research Articles', "Others"],
+    links: ['Tripcamp', 'Dronest', 'Instavibes', 'Forget Me Notes', 'VuIR_Zoom', 'VuIRHD1', 'TonyNgo.me', 'Research Articles', "Others"],
   },
   {
     src: 'images/vscode.jpg',
@@ -277,35 +277,35 @@ export const skillObjs = [
     alt: 'Arduino',
     name: 'Arduino',
     type: 'Hardware',
-    links: ['VuIRZoom', 'VuIRHD', 'Others'],
+    links: ['VuIR_Zoom', 'VuIRHD1', 'Others'],
   },
   {
     src: 'images/raspberrypi.png',
     alt: 'Raspberry Pi single board computer SBC',
     name: 'Raspberry Pi/SBC',
     type: 'Hardware',
-    links: ['VuIRZoom', 'VuIRHD', 'Others'],
+    links: ['VuIR_Zoom', 'VuIRHD1', 'Others'],
   },
   {
     src: 'images/autoinventor.png',
     alt: 'AutoDesk Inventor 3D',
     name: 'AutoDesk Inventor/CAD',
     type: 'IDE',
-    links: ['VuIRZoom', 'VuIRHD', 'Others'],
+    links: ['VuIR_Zoom', 'VuIRHD1', 'Others'],
   },
   {
     src: 'images/ros.png',
     alt: 'ROS Robot Operating System',
     name: 'ROS Robot Operating System',
     type: 'OS',
-    links: ['VuIRHD', 'Others'],
+    links: ['VuIRHD1', 'Others'],
   },
   {
     src: 'images/opencv.webp',
     alt: 'OpenCV',
     name: 'OpenCV',
     type: 'Library',
-    links: ['VuIRZoom', 'VuIRHD', 'Others'],
+    links: ['VuIR_Zoom', 'VuIRHD1', 'Others'],
   },
 ];
 
@@ -332,254 +332,82 @@ export const projectObjs = [
     alt: 'Tripcamp',
     name: 'Tripcamp',
     type: 'Project',
-    x: 50,
-    y: 10,
-    normal: {
-      stroke: {
-        color: distinctColors[0],
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: distinctColors[0],
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: `1 ${distinctColors[0]}` }
+    skills: [],
   },
   {
     src: 'images/dronest_logo.png',
     alt: 'Dronest',
     name: 'Dronest',
     type: 'Project',
-    x: 200,
-    y: 10,
-    normal: {
-      stroke: {
-        color: "#ffa090",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#ffa090",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #ffa090" }
+    skills: [],
   },
   {
     src: 'images/dronestms_logo.png',
     alt: 'Dronest Messenger Server',
     name: 'Dronest Messenger Server',
     type: 'Project',
-    x: 200,
-    y: 10,
-    normal: {
-      stroke: {
-        color: "#ffa0aa",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#ffa0aa",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #ffa0aa" }
+    skills: [],
   },
   {
     src: 'images/instavibes_logo.png',
     alt: 'Instavibes',
     name: 'Instavibes',
     type: 'Project',
-    x: 350,
-    y: 10,
-    normal: {
-      stroke: {
-        color: "#ffa0ff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#ffa0ff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #ffa0ff" }
+    skills: [],
   },
   {
     src: 'images/vuirhd1_logo.png',
     alt: 'VuIR HD',
-    name: 'VuIRHD',
+    name: 'VuIRHD1',
     type: 'Project',
-    x: 50,
-    y: 150,
-    normal: {
-      stroke: {
-        color: "#ffbbff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#ffbbff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #ffbbff" }
+    skills: [],
   },
   {
     src: 'images/forgetmenotes_logo.png',
     alt: 'Forget Me Notes',
     name: 'Forget Me Notes',
     type: 'Project',
-    x: 200,
-    y: 150,
-    normal: {
-      stroke: {
-        color: "#ffeeff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#ffeeff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #ffeeff" }
+    skills: [],
   },
   {
     src: 'images/VuIRZoom_logo.png',
-    alt: 'VuIRZoom',
-    name: 'VuIRZoom',
+    alt: 'VuIR_Zoom',
+    name: 'VuIR_Zoom',
     type: 'Project',
-    x: 350,
-    y: 150,
-    normal: {
-      stroke: {
-        color: "#00eeff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#00eeff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #00eeff" }
+    skills: [],
   },
   {
     src: 'images/tonyngo_me_logo.png',
     alt: 'TonyNgo.me',
     name: 'TonyNgo.me',
     type: 'Project',
-    x: 400,
-    y: 150,
-    normal: {
-      stroke: {
-        color: "#88eeff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#88eeff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #88eeff" }
+    skills: [],
   },
   {
     src: 'images/scientificarticle.png',
     alt: 'Research Articles',
     name: 'Research Articles',
     type: 'Project',
-    x: 400,
-    y: 150,
-    normal: {
-      stroke: {
-        color: "#aaeeff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#aaeeff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #aaeeff" }
+    skills: [],
   },
   {
     src: 'images/others.png',
     alt: 'Others',
     name: 'Others',
     type: 'Project',
-    x: 400,
-    y: 150,
-    normal: {
-      stroke: {
-        color: "#ff22ff",
-        thickness: "0",
-        dash: "5 2",
-        lineJoin: "round"
-      }
-    },
-    hovered: {
-      stroke: {
-        color: "#ff22ff",
-        thickness: "2",
-        dash: "8 5",
-        lineJoin: "round"
-      }
-    },
-    selected: { stroke: "1 #ff22ff" }
+    skills: [],
   },
 ];
 
 const memo = {};
+
+export function addSkillsToProjects() {
+  projectObjs.forEach(proj => proj.skills = []);
+  skillObjs.forEach(skill => skill.links.forEach(projName => {
+    const project = projectObjs.find(prj => prj.name === projName);
+    if(project) project.skills.push(skill);
+  }));
+}
 
 export function getProjectNodes(data) {
   return data.nodes.filter(node => node.group === 'project').map(node => node.id);

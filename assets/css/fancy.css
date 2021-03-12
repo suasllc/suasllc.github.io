@@ -111,18 +111,31 @@
 .modal-content>img:hover{
   transform: scale(1) !important;
 } */
+.popup_holder{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
 .popup{
   display: none;
-  position: absolute;
-  top: 100px;
-  /* left: 100px; */
-  right: 100px;
+  position: relative;
+  /* top: 50px;
+  right: 50px;
+  left: 50px; */
+  left: 60px;
+  /* bottom: 280px; */
+  top: 60px;
   z-index: 100;
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
   border: 1px solid green;
   border-radius: 10px;
   z-index: 10;
+}
+.popup_holder:hover .popup{
+  display: flex;
 }
 .resume_prev_and_button{
   display: flex; 

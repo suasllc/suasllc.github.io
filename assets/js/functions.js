@@ -1,10 +1,15 @@
 // import { srcs, alts } from './skilldata.js';
-import { skillObjs, make_data_nodes, getProjectNodes } from './skilldata.js';
+import {
+  skillObjs, projectObjs, make_data_nodes,
+  getProjectNodes, addSkillsToProjects,
+} from './skilldata.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   let graphMode = false;
   let skillType = 'all';
+  const listedProjectNames = ['tripcamp', 'dronest', 'instavibes', 'vuirhd1', 'forgetmenotes', 'vuir_zoom'];
 
+  addSkillsToProjects();
   populateSkillIcons();
   addSkillNav();
 
@@ -12,7 +17,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const skills_div = document.getElementById('skills_div');
   const back_to_top_buttons = document.querySelectorAll('.back_to_top_button');
   let more_skills_expanded = false;
-  const names = ['tripcamp', 'dronest', 'instavibes', 'vuirhd1', 'forgetmenotes', 'vuir_zoom'];
   const preview_options_divs = Array.from(document.querySelectorAll('.preview'));
   const hover_options_divs = Array.from(document.querySelectorAll('.hover_options'));
   // const viewLiveBtns = Array.from(document.querySelectorAll('.preview_button.live'));
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const modals = Array.from(document.querySelectorAll('.modal'));
   const closeButtons = document.querySelectorAll('.x_close');
 
-  const unitWidth = 114;
+  const unitWidth = 94;
   const unitHeight = unitWidth;
   const margin = () => {
     if (window.innerWidth > 1680) return 6 * 16;
@@ -96,7 +100,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   preview_options_divs.forEach(div => {
     div.addEventListener('mouseover', e => {
-      const name = names.find(name => div.classList.contains(name));
+      const name = listedProjectNames.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
       if (hover_options_div) {
         // setTimeout(() => {
@@ -110,7 +114,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       stopOtherRunningGifs(name);
     });
     div.addEventListener('mouseleave', e => {
-      const name = names.find(name => div.classList.contains(name));
+      const name = listedProjectNames.find(name => div.classList.contains(name));
       const hover_options_div = hover_options_divs.find(div => div.classList.contains(name));
       if (hover_options_div)
         hover_options_div.style.visibility = 'hidden';
@@ -202,7 +206,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const article = document.createElement('div');
       article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
       article.innerHTML = `<img src=${el.src} class='technology-icon 
-        ${el.name} ${el.type}' alt=${el.alt} /> <div class="popup"></div>`;
+        ${el.name} ${el.type}' alt=${el.alt} /> 
+        <div class="popup_holder">
+          <div class="popup">Hello</div>
+        </div>`;
       skills_div.appendChild(article);
     });
   }
@@ -244,7 +251,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const skills_nav_div = document.getElementById('skills_nav_div');
     const navdiv = document.createElement('div');
     const types = getTypes();
-
 
     navdiv.innerHTML = `<div class="skill_tab-nav four" >
       <a href="#skills" class="skill_tab-nav-option p_active" activeClassName="skill_tab-nav-option-active"  id="all_skills" >
@@ -340,7 +346,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const graphView = document.getElementById('skill_tab_graph');
   let inListView = true;
   listView.addEventListener('click', e => {
-    if(inListView) return;
+    if (inListView) return;
     inListView = true;
     listView.classList.add('p_active');
     listView.classList.remove('next_to_active_right');
@@ -353,7 +359,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     handleExpandCollapse();
   });
   graphView.addEventListener('click', e => {
-    if(!inListView) return
+    if (!inListView) return
     inListView = false;
     graphView.classList.add('p_active');
     graphView.classList.remove('next_to_active_left');
@@ -514,7 +520,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             showhideedges.disabled = false;
             showEdges = true;
             showhideedgesicon.src = "images/disconnected.png";
-            showhideedgestext.innerText = "Click to HIDE edges";            
+            showhideedgestext.innerText = "Click to HIDE edges";
           }
         }
         chart.select(projectNodes[index]);
@@ -523,7 +529,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           chart.unselect(projectNodes[iToClear]);
         }
         index++;
-      }, 400);
+      }, 2000);
     }
   }
   function switchLayout() {
@@ -536,5 +542,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
       if (fixed) chart.layout().type("fixed");
       else chart.layout().type("forced");
     }, 8000);
+  }
+
+  function groupSkillsPerProject() {
+    const listedProjects = projectObjs.filter(proj =>
+      listedProjectNames.includes(proj.name
+        .replaceAll(" ", "")
+        .toLowerCase()));
+    const projDiv = document.createElement('div');
+    projDiv.className = "project_skills_div";
+    listedProjects.forEach(proj => {
+      const skillsDiv = document.createElement('div');
+      skillsDiv.className = "skills_column_div";
+      const headerDiv = document.createElement('div');
+      headerDiv.className = "project_header_div";
+      headerDiv.innerHTML = `<img src="${proj.src}" class=""/>`;
+      skillsDiv.appendChild(headerDiv);
+      proj.skills.forEach(el => {
+        const article = document.createElement('div');
+        article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
+        article.innerHTML = `<img src=${el.src} class='technology-icon small
+          ${el.name} ${el.type}' alt=${el.alt} /> <div class="popup"></div>`;
+        skillsDiv.appendChild(article);
+      })
+      projDiv.appendChild(skillsDiv);
+    });
+    skills_div.appendChild(projDiv);
   }
 });
