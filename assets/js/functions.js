@@ -392,8 +392,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     const controlDiv = document.createElement('div');
     controlDiv.classList.add('graph_control_div');
-    controlDiv.innerHTML = `<label id="grid_lo" class="button small equal_width" name="type">Grid</label>
-    <label class="button small equal_width" id="cluster_lo" name="type">Cluster</label>`;
+    controlDiv.innerHTML = 
+    `<label id="grid_lo" class="button small icon equal_width" name="type">
+      <i class="fas fa-th"></i>
+      <div class="tooltip_small"><div class="tooltip_small_text">Grid View</div></div>
+    </label>
+    <label class="button small equal_width" id="cluster_lo" name="type">
+      <img src="images/cluster.png" width="17px" height="17px" />
+      <div class="tooltip_small"><div class="tooltip_small_text">Cluster View</div></div>
+    </label>
+    <label class="button small icon equal_width" id="zoomin" name="type">
+      <i class="fas fa-search-plus"></i>
+      <div class="tooltip_small"><div class="tooltip_small_text">Zoom In</div></div>
+    </label>
+    <label class="button small icon equal_width" id="zoomout" name="type">
+      <i class="fas fa-search-minus"></i>
+      <div class="tooltip_small"><div class="tooltip_small_text">Zoom Out</div></div>
+    </label>
+    <label class="button small icon equal_width" id="fitscreen" name="type">
+      <i class="fas fa-expand"></i>
+      <div class="tooltip_small"><div class="tooltip_small_text">Fit Window</div></div>
+    </label>
+    `;
     skills_graph_div.appendChild(controlDiv);
 
     // add a zoom control panel
@@ -416,6 +436,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // }, 8000);
     const cluster = document.getElementById('cluster_lo');
     const gridlo = document.getElementById('grid_lo');
+    const zoomin = document.getElementById('zoomin');
+    const zoomout = document.getElementById('zoomout');
+    const fitscreen = document.getElementById('fitscreen');
     if (cluster) {
       cluster.addEventListener('click', e => {
         layoutType('forced');
@@ -424,6 +447,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (gridlo) {
       gridlo.addEventListener('click', e => {
         layoutType('fixed');
+      });
+    }
+    if (zoomin) {
+      zoomin.addEventListener('click', e => {
+        chart.zoomIn();
+      });
+    }
+    if (zoomout) {
+      zoomout.addEventListener('click', e => {
+        chart.zoomOut();
+      });
+    }
+    if (fitscreen) {
+      fitscreen.addEventListener('click', e => {
+        chart.fit();
       });
     }
   }
