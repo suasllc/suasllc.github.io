@@ -309,6 +309,23 @@ export const skillObjs = [
   },
 ];
 
+const distinctColors = [
+  '#800000',
+  '#469990',
+  '#9A6324',
+  '#000075',
+  '#e6194B',
+  '#f58231',
+  '#3cb44b',
+  '#42d4f4',
+  '#4363d8',
+  '#f032e6',
+  '#aaffc3',
+  '#fabed4',
+  '#dcbeff',
+  '#000000',
+]
+
 export const projectObjs = [
   {
     src: 'images/tripcamp_logo.png',
@@ -317,6 +334,23 @@ export const projectObjs = [
     type: 'Project',
     x: 50,
     y: 10,
+    normal: {
+      stroke: {
+        color: distinctColors[0],
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: distinctColors[0],
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: `1 ${distinctColors[0]}` }
   },
   {
     src: 'images/dronest_logo.png',
@@ -325,6 +359,23 @@ export const projectObjs = [
     type: 'Project',
     x: 200,
     y: 10,
+    normal: {
+      stroke: {
+        color: "#ffa090",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#ffa090",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #ffa090" }
   },
   {
     src: 'images/dronestms_logo.png',
@@ -333,6 +384,23 @@ export const projectObjs = [
     type: 'Project',
     x: 200,
     y: 10,
+    normal: {
+      stroke: {
+        color: "#ffa0aa",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#ffa0aa",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #ffa0aa" }
   },
   {
     src: 'images/instavibes_logo.png',
@@ -341,6 +409,23 @@ export const projectObjs = [
     type: 'Project',
     x: 350,
     y: 10,
+    normal: {
+      stroke: {
+        color: "#ffa0ff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#ffa0ff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #ffa0ff" }
   },
   {
     src: 'images/vuirhd1_logo.png',
@@ -349,6 +434,23 @@ export const projectObjs = [
     type: 'Project',
     x: 50,
     y: 150,
+    normal: {
+      stroke: {
+        color: "#ffbbff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#ffbbff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #ffbbff" }
   },
   {
     src: 'images/forgetmenotes_logo.png',
@@ -357,6 +459,23 @@ export const projectObjs = [
     type: 'Project',
     x: 200,
     y: 150,
+    normal: {
+      stroke: {
+        color: "#ffeeff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#ffeeff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #ffeeff" }
   },
   {
     src: 'images/VuIRZoom_logo.png',
@@ -365,6 +484,23 @@ export const projectObjs = [
     type: 'Project',
     x: 350,
     y: 150,
+    normal: {
+      stroke: {
+        color: "#00eeff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#00eeff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #00eeff" }
   },
   {
     src: 'images/tonyngo_me_logo.png',
@@ -373,6 +509,23 @@ export const projectObjs = [
     type: 'Project',
     x: 400,
     y: 150,
+    normal: {
+      stroke: {
+        color: "#88eeff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#88eeff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #88eeff" }
   },
   {
     src: 'images/scientificarticle.png',
@@ -381,6 +534,23 @@ export const projectObjs = [
     type: 'Project',
     x: 400,
     y: 150,
+    normal: {
+      stroke: {
+        color: "#aaeeff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#aaeeff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #aaeeff" }
   },
   {
     src: 'images/others.png',
@@ -389,6 +559,23 @@ export const projectObjs = [
     type: 'Project',
     x: 400,
     y: 150,
+    normal: {
+      stroke: {
+        color: "#ff22ff",
+        thickness: "0",
+        dash: "5 2",
+        lineJoin: "round"
+      }
+    },
+    hovered: {
+      stroke: {
+        color: "#ff22ff",
+        thickness: "2",
+        dash: "8 5",
+        lineJoin: "round"
+      }
+    },
+    selected: { stroke: "1 #ff22ff" }
   },
 ];
 
@@ -412,10 +599,30 @@ export function make_data_nodes(type) {
 
   let nodes = [];
   let edges = [];
-  skillObjsCopy.forEach(el => el.links.forEach(e => edges.push({
-    from: e,
-    to: el.name,
-  })));
+  skillObjsCopy.forEach(el => el.links.forEach(e => {
+    let i = projectObjs.findIndex(obj => obj.name === e);
+    edges.push({
+      from: e,
+      to: el.name,
+      normal: {
+        stroke: {
+          color: distinctColors[i],
+          thickness: "0",
+          dash: "5 2",
+          lineJoin: "round"
+        }
+      },
+      hovered: {
+        stroke: {
+          color: distinctColors[i],
+          thickness: "2",
+          dash: "8 5",
+          lineJoin: "round"
+        }
+      },
+      selected: { stroke: `1 ${distinctColors[i]}` }
+    })
+  }));
 
   let connectedNodes = new Set();
   edges.forEach(el => {

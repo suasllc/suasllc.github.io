@@ -434,9 +434,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     chart.layout().type("fixed");
     // chart.layout().iterationCount(0);
     // configure the visual settings of edges
-    chart.edges().normal().stroke("#000000", 0);//, "5 5", "round");
-    chart.edges().hovered().stroke("#ff781e", 1, "10 5");
-    chart.edges().selected().stroke("#0F5FA6", 1);
+    // chart.edges().normal().stroke("#000000", 0);//, "5 5", "round");
+    // chart.edges().hovered().stroke("#ff781e", 1, "10 5");
+    // chart.edges().selected().stroke("#0F5FA6", 1);
     const projectNodes = getProjectNodes(graphData);
     let playing = true;
     let showEdges = true;
