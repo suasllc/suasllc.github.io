@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let showEdges = true;
     let selectingInterval;
     chart.container("skills_graph").draw(true); //Asynchronous drawing
-    // setPlayPause();
+    setPlayPause();
 
     // const projects = chart.group('project');
 
