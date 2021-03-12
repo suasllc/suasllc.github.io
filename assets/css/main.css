@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
 @import url(fancy.css);
 @import url(ProfilePostsNav.css);
+@import url("https://cdn.anychart.com/releases/8.9.0/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4");
+@import url("https://cdn.anychart.com/releases/8.9.0/fonts/css/anychart-font.min.css")
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn

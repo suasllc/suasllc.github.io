@@ -392,13 +392,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     const controlDiv = document.createElement('div');
     controlDiv.classList.add('graph_control_div');
-    controlDiv.innerHTML = `<label class="button equal_width" id="cluster_lo" name="type">Forced Layout</label>
-    <label id="grid_lo" class="button equal_width" name="type">Fixed Layout</label>`;
+    controlDiv.innerHTML = `<label id="grid_lo" class="button small equal_width" name="type">Grid</label>
+    <label class="button small equal_width" id="cluster_lo" name="type">Cluster</label>`;
     skills_graph_div.appendChild(controlDiv);
 
+    // add a zoom control panel
+    // const zoomController = anychart.ui.zoom();
+    // zoomController.target(chart);
+    // zoomController.render();
     // draw the chart
     chart.layout().type("fixed");
+    // chart.layout().iterationCount(0);
     chart.container("skills_graph").draw();
+
     // let fixed = true;
     // if (interval) {
     //   clearInterval(interval);
@@ -412,7 +418,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const gridlo = document.getElementById('grid_lo');
     if (cluster) {
       cluster.addEventListener('click', e => {
-        console.log(cluster, gridlo);
         layoutType('forced');
       });
     }
