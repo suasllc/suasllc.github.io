@@ -541,13 +541,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
       let index = 0;
       let round = 0;
+      let maxRound = 1;
       chart.unselect(projectNodes);
       showhideedges.disabled = true;
       selectingInterval = setInterval(() => {
         if (index >= projectNodes.length) {
           index = 0;
           round++;
-          if (round >= 3) {
+          if (round > maxRound) {
             clearInterval(selectingInterval);
             playing = false;
             ppicon.className = 'fas fa-play';
@@ -559,7 +560,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           }
         }
         chart.select(projectNodes[index]);
-        if (round < 2) {
+        if (round < maxRound) {
           let iToClear = (index === 0) ? projectNodes.length - 1 : index - 1;
           chart.unselect(projectNodes[iToClear]);
         }
