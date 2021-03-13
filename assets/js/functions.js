@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           more_skills_expanded = false;
           handleExpandCollapse();
         }
-      }, 1500);
+      }, 5000);
     });
   }
   back_to_top_buttons.forEach(btt => {
