@@ -127,7 +127,7 @@ export default class Darkmode {
       options.autoMatchOsTheme &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     const darkmodeNeverActivatedByAction =
-      window.localStorage.getItem('tonyngo.me_darkmode') === null;
+      window.localStorage.getItem('tonyngo.me_darkmode') === undefined;
 
     if (
       (darkmodeActivated === true && options.saveInCookies) ||
