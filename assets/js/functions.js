@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const numerOfIconsPerRow = () => Math.floor((window.innerWidth - 2 * margin()) / unitWidth);
   const numberOfRowsNeeded = () => Math.ceil(numberOfIcons() / numerOfIconsPerRow());
   const expandedTotalHeight = () => numberOfRowsNeeded() * unitHeight + 10;
-  const collapsedTotalHeight = () => (numberOfRowsNeeded() < 2 ? numberOfRowsNeeded() : 2) * unitHeight + 0;
+  const collapsedTotalHeight = () => (numberOfRowsNeeded() < 2 ? numberOfRowsNeeded() : 4) * unitHeight + 0;
 
   const prevImgs = Array.from(document.querySelectorAll('.prev_img'));
   const srcObj = {
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
         skillDiv.innerHTML = `<div class="popup" style="${style}">
           <img src="${skillObj.src}" class="popup_skill_img"/>
-          <div class="popup_title">Used In Projects</div>
+          <div class="popup_title">Used In ${inProjects.length} Projects</div>
           <div class="popup_projs_div">
           ${
             inProjects.map(prj => MiniProjectDisplay(prj)).join("")
