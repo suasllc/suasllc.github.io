@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   const isMobile = () => /iPhone|iPad|iPod|Android|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
+  const isAndroid = () => /Android/i.test(navigator.userAgent);
 
   if (isMobile()) {
     skills_div.addEventListener('click', e => {
@@ -619,7 +620,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   const pdf_preview_object = document.getElementById('pdf_preview_object');
   const hasPdfViewer = getAcrobatInfo().acrobat ==="installed";
-  if(!hasPdfViewer) {
+  if(!hasPdfViewer || isAndroid()) {
     pdf_preview_object.innerHTML = "";
     pdf_preview_object.className = "";
   }
