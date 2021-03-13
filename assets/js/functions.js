@@ -3,6 +3,7 @@ import {
   skillObjs, projectObjs, make_data_nodes,
   getProjectNodes, addSkillsToProjects,
 } from './skilldata.js';
+import { getAcrobatInfo } from './acrobatinfo.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   let graphMode = false;
@@ -614,5 +615,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
       projDiv.appendChild(skillsDiv);
     });
     skills_div.appendChild(projDiv);
+  }
+
+  const no_pdf_ppdf_preview_objectlugin = document.getElementById('pdf_preview_object');
+  const hasPdfViewer = getAcrobatInfo().acrobat ==="installed";
+  if(!hasPdfViewer) {
+    pdf_preview_object.innerHTML = "";
+    pdf_preview_object.className = "";
   }
 });
