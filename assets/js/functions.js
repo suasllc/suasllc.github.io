@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     skills_div.appendChild(projDiv);
   }
 
-  const no_pdf_ppdf_preview_objectlugin = document.getElementById('pdf_preview_object');
+  const pdf_preview_object = document.getElementById('pdf_preview_object');
   const hasPdfViewer = getAcrobatInfo().acrobat ==="installed";
   if(!hasPdfViewer) {
     pdf_preview_object.innerHTML = "";
