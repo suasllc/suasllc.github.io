@@ -130,8 +130,8 @@ export default class Darkmode {
       window.localStorage.getItem('tonyngo.me_darkmode') === undefined;
 
     if (
-      (darkmodeActivated === true && options.saveInCookies) ||
-      (darkmodeNeverActivatedByAction && preferedThemeOs)
+      (darkmodeActivated === true && options.saveInCookies) 
+      // || (darkmodeNeverActivatedByAction && preferedThemeOs)
     ) {
       layer.classList.add(
         'darkmode-layer--expanded',
