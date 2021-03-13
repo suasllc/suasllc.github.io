@@ -229,20 +229,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const inProjects = [];
         skillObj.links.forEach(name => {
           const proj = projectObjs.find(prj => prj.name === name);
-          if(proj) inProjects.push(proj);
+          if (proj) inProjects.push(proj);
         });
         skillDiv.innerHTML = `<div class="popup" style="${style}">
           <img src="${skillObj.src}" class="popup_skill_img"/>
           <div class="popup_title">Used In ${inProjects.length} Projects</div>
           <div class="popup_projs_div">
-          ${
-            inProjects.map(prj => MiniProjectDisplay(prj)).join("")
+          ${inProjects.map(prj => MiniProjectDisplay(prj)).join("")
           }
           </div>
         </div>`;
       }
     })
-    function MiniProjectDisplay(project){
+    function MiniProjectDisplay(project) {
       return `<div>
         <img src="${project.src}" class="popup_proj_img"/>
       </div>`;
@@ -425,6 +424,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     chart.title("<b>Projects-Skills Connection Network</b>" + "<br>" +
       "Illustration of the connections between my skills and my projects"
       + "<br>" + "This shows how my skills have actually been utilized");
+    // configure tooltips
+    chart.tooltip().useHtml(true);
+    chart.tooltip().format(function () {
+      if (this.type === "node") {
+        return "<div style='display: flex; justify-content: center; flex-direction: column;'> <div style='font-weight:bold'>" 
+          + this.getData("group") + ":</div>"
+          + this.id + "</div>";
+      } else {
+        return this.getData("to") + " used in " + this.getData("from");
+      }
+    });
     // skills_graph_div.setAttribute('id','skills_graph');
     skills_graph_div.setAttribute('style',
       `margin-top: -10px;

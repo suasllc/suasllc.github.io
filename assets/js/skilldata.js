@@ -410,7 +410,7 @@ export function addSkillsToProjects() {
 }
 
 export function getProjectNodes(data) {
-  return data.nodes.filter(node => node.group === 'project').map(node => node.id);
+  return data.nodes.filter(node => node.group === 'Project').map(node => node.id);
 }
 
 export function make_data_nodes(type) {
@@ -472,6 +472,7 @@ export function make_data_nodes(type) {
     },
     x: Math.floor(width / columns) * (i % columns),
     y: Math.floor(height / rows) * Math.floor(i / columns),
+    group: 'Skill',
   }));
   nodes = nodes.concat(
     projectObjs.filter(el => connectedNodes.has(el.name))
@@ -483,7 +484,7 @@ export function make_data_nodes(type) {
         },
         x: Math.floor(projectWidth / projectColumns) * (i % projectColumns) - 20,
         y: Math.floor(projectHeight / projectRows) * Math.floor(i / projectColumns) - 80,
-        group: 'project',
+        group: 'Project',
       }))
   )
 
@@ -493,7 +494,3 @@ export function make_data_nodes(type) {
 export function make_data_nodes_JSON() {
   return JSON.stringify(make_data_nodes());
 }
-
-// nodes: [{ "id": "Lannister" }]
-// edges: [{ "from": "Lannister", "to": "Tully" }]
-// console.log(skillObjs);
