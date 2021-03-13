@@ -181,6 +181,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       setTimeout(() => {
         if (!more_skills_expanded) {
           more_skills_expanded = true;
+          skills_div.classList.add('show_over_flow');
           handleExpandCollapse();
         }
       }, 100);
@@ -189,6 +190,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       setTimeout(() => {
         if (more_skills_expanded) {
           more_skills_expanded = false;
+          skills_div.classList.remove('show_over_flow');
           handleExpandCollapse();
         }
       }, 5000);
@@ -216,31 +218,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     skills_div.addEventListener('mouseover', e => {
       const skillDiv = e.target;
       if (skillDiv.className.includes('popup_holder')) {
+        skillDiv.innerHTML = "";
         const skillIndex = Number(skillDiv.id.split('_')[0]);
         const skillObj = skillObjs[skillIndex];
         if (!skillObj) return;
-        let horizontal = "left";
+        let horizontal = "left: 60px";
         let vertical = "60px";
-        if ((skills_div.offsetWidth - (e.clientX - e.offsetX)) < 300) {
-          horizontal = "right";
+        if ((skills_div.offsetWidth - (e.clientX - e.offsetX)) < 350) {
+          horizontal = `left: ${(skills_div.offsetWidth - (e.clientX - e.offsetX)) - 300}px`;
         }
-        if ((skills_div.offsetHeight - (e.clientY - e.offsetY)) < 200) {
-          vertical = "-80px";
-        }
-        let style = `${horizontal}: 60px; top: ${vertical}`;
+        // if ((skills_div.offsetHeight - (e.clientY - e.offsetY)) < 200) {
+        //   vertical = "-80px";
+        // }
+        let style = `${horizontal}; top: ${vertical};`;
         const inProjects = [];
         skillObj.links.forEach(name => {
           const proj = projectObjs.find(prj => prj.name === name);
           if (proj) inProjects.push(proj);
         });
-        skillDiv.innerHTML = `<div class="popup" style="${style}">
+        setTimeout(() => {
+          skillDiv.innerHTML = `<div class="popup" style="${style}">
           <img src="${skillObj.src}" class="popup_skill_img"/>
           <div class="popup_title">Used In ${inProjects.length} Projects</div>
           <div class="popup_projs_div">
-          ${inProjects.map(prj => MiniProjectDisplay(prj)).join("")
-          }
-          </div>
-        </div>`;
+            ${inProjects.map(prj => MiniProjectDisplay(prj)).join("")
+            }
+            </div>
+          </div>`;
+        }, 500);
       }
     })
     function MiniProjectDisplay(project) {
@@ -430,7 +435,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     chart.tooltip().useHtml(true);
     chart.tooltip().format(function () {
       if (this.type === "node") {
-        return "<div style='display: flex; justify-content: center; flex-direction: column;'> <div style='font-weight:bold'>" 
+        return "<div style='display: flex; justify-content: center; flex-direction: column;'> <div style='font-weight:bold'>"
           + this.getData("group") + ":</div>"
           + this.id + "</div>";
       } else {
@@ -619,8 +624,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   }
 
   const pdf_preview_object = document.getElementById('pdf_preview_object');
-  const hasPdfViewer = getAcrobatInfo().acrobat ==="installed";
-  if(!hasPdfViewer) {
+  const hasPdfViewer = getAcrobatInfo().acrobat === "installed";
+  if (!hasPdfViewer) {
     pdf_preview_object.innerHTML = "";
     pdf_preview_object.className = "";
   }

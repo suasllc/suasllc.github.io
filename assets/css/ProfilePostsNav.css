@@ -99,6 +99,9 @@
   justify-content: center !important;
   align-items: center !important;
 }
+.show_over_flow{
+  overflow: visible !important;
+}
 
 .list_network{
   margin-top: -80px !important; 
