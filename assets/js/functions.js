@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           more_skills_expanded = false;
           handleExpandCollapse();
         }
-      }, 300);
+      }, 1500);
     });
   }
   back_to_top_buttons.forEach(btt => {
@@ -202,16 +202,51 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function populateSkillIcons() {
     const skills_div = document.getElementById('skills_div');
-    skillObjs.forEach(el => {
+    skillObjs.forEach((el, i) => {
       const article = document.createElement('div');
       article.setAttribute('class', `article_skill shown_block ${el.name} ${el.type}`);
       article.innerHTML = `<img src=${el.src} class='technology-icon 
         ${el.name} ${el.type}' alt=${el.alt} /> 
-        <div class="popup_holder">
-          <div class="popup">Hello</div>
+        <div class="popup_holder" id="${i}_skillObjs">          
         </div>`;
       skills_div.appendChild(article);
     });
+    skills_div.addEventListener('mouseover', e => {
+      const skillDiv = e.target;
+      if (skillDiv.className.includes('popup_holder')) {
+        const skillIndex = Number(skillDiv.id.split('_')[0]);
+        const skillObj = skillObjs[skillIndex];
+        if (!skillObj) return;
+        let horizontal = "left";
+        let vertical = "60px";
+        if ((skills_div.offsetWidth - (e.clientX - e.offsetX)) < 300) {
+          horizontal = "right";
+        }
+        if ((skills_div.offsetHeight - (e.clientY - e.offsetY)) < 200) {
+          vertical = "-80px";
+        }
+        let style = `${horizontal}: 60px; top: ${vertical}`;
+        const inProjects = [];
+        skillObj.links.forEach(name => {
+          const proj = projectObjs.find(prj => prj.name === name);
+          if(proj) inProjects.push(proj);
+        });
+        skillDiv.innerHTML = `<div class="popup" style="${style}">
+          <img src="${skillObj.src}" class="popup_skill_img"/>
+          <div class="popup_title">Used In Projects</div>
+          <div class="popup_projs_div">
+          ${
+            inProjects.map(prj => MiniProjectDisplay(prj)).join("")
+          }
+          </div>
+        </div>`;
+      }
+    })
+    function MiniProjectDisplay(project){
+      return `<div>
+        <img src="${project.src}" class="popup_proj_img"/>
+      </div>`;
+    }
   }
 
   function removeSkills(type) {
