@@ -3,7 +3,7 @@
 @import url(fancy.css);
 @import url(ProfilePostsNav.css);
 @import url("https://cdn.anychart.com/releases/8.9.0/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4");
-@import url("https://cdn.anychart.com/releases/8.9.0/fonts/css/anychart-font.min.css")
+@import url("https://cdn.anychart.com/releases/8.9.0/fonts/css/anychart-font.min.css");
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
@@ -2419,7 +2419,7 @@ button,
   position: relative;
   /* background-color: #2c2b2c; */
 }
-.back_to_top_button{
+.back_to_top_button1{
   width: 30px;
   height: 30px;
   object-fit: contain;
@@ -2430,9 +2430,21 @@ button,
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
+.back_to_top_button{
+  opacity: 0.6;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  object-fit: contain;
+  position: absolute;
+  right: 5px;
+  transform: rotate(180deg);
+  transition: all 0s ease-in-out, transform 0.4s ease-in-out;
+  cursor: pointer;
+}
 .back_to_top_button:hover{
-  transform: scale(1.5);
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+  transform: scale(1.5) rotate(180deg);
+  /* box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);   */
 }
 .expanded{
   /* height: calc(31/(100vw/100px) * 100px  ); */

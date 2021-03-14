@@ -46,7 +46,7 @@
   border-bottom: none;
   border-radius: 5px 5px 0px 0px;
   box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.2);
-  background-color: #bff0f0;
+  /* background-color: #bff0f0; */
   cursor: default;
 }
 .p_active::after {
@@ -65,10 +65,10 @@
 }
 .graph{
   font-size: 15px;
-  background-color: #e0f0ff;
+  /* background-color: #e0f0ff; */
 }
 .p_active.graph{
-  background-color: #bff0ff;
+  /* background-color: #bff0ff; */
 }
 
 .next_to_active_right{
