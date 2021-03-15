@@ -384,34 +384,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-  const listView = document.getElementById('skill_tab_list');
-  const graphView = document.getElementById('skill_tab_graph');
-  let inListView = true;
-  listView.addEventListener('click', e => {
-    if (inListView) return;
-    inListView = true;
-    listView.classList.add('p_active');
-    listView.classList.remove('next_to_active_right');
-    graphView.classList.add('next_to_active_left');
-    graphView.classList.remove('p_active');
-    graphMode = false;
-    deleteGraph();
-    populateSkillIcons();
-    showOnlyType(skillType)
-    handleExpandCollapse();
-  });
-  graphView.addEventListener('click', e => {
-    if (!inListView) return
-    inListView = false;
-    graphView.classList.add('p_active');
-    graphView.classList.remove('next_to_active_left');
-    listView.classList.add('next_to_active_right');
-    listView.classList.remove('p_active');
-    graphMode = true;
-    removeSkills();
-    showGraph(skillType);
-    handleExpandCollapse();
-  });
+  // const listView = document.getElementById('skill_tab_list');
+  // const graphView = document.getElementById('skill_tab_graph');
+  // let inListView = true;
+  // listView.addEventListener('click', e => {
+  //   if (inListView) return;
+  //   inListView = true;
+  //   listView.classList.add('p_active');
+  //   listView.classList.remove('next_to_active_right');
+  //   graphView.classList.add('next_to_active_left');
+  //   graphView.classList.remove('p_active');
+  //   graphMode = false;
+  //   deleteGraph();
+  //   populateSkillIcons();
+  //   showOnlyType(skillType)
+  //   handleExpandCollapse();
+  // });
+  // graphView.addEventListener('click', e => {
+  //   if (!inListView) return
+  //   inListView = false;
+  //   graphView.classList.add('p_active');
+  //   graphView.classList.remove('next_to_active_left');
+  //   listView.classList.add('next_to_active_right');
+  //   listView.classList.remove('p_active');
+  //   graphMode = true;
+  //   removeSkills();
+  //   showGraph(skillType);
+  //   handleExpandCollapse();
+  // });
 
   function deleteGraph() {
     const skills_graph_div = document.getElementById('skills_graph');
