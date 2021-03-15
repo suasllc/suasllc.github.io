@@ -49,6 +49,7 @@
   /* background-color: #bff0f0; */
   cursor: default;
   color: #0F5FA6;
+  /* font-weight: bolder; */
 }
 .p_active::after {
   content: '';
