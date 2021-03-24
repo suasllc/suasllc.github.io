@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setTimeout(() => {
           skillDiv.innerHTML = `<div class="popup" style="${style}">
           <img src="${skillObj.src}" class="popup_skill_img"/>
-          <div class="popup_title">Used In ${inProjects.length} Projects</div>
+          <div class="popup_title">Used In ${inProjects.length} Project${inProjects.length>1?'s':''}</div>
           <div class="popup_projs_div">
             ${inProjects.map(prj => MiniProjectDisplay(prj)).join("")
             }
