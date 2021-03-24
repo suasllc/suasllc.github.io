@@ -307,6 +307,20 @@ export const skillObjs = [
     type: 'Library',
     links: ['VuIR_Zoom', 'VuIRHD1', 'Others'],
   },
+  {
+    src: 'images/mochatest.jpg',
+    alt: 'Mocha Test',
+    name: 'Mocha Test',
+    type: 'Library',
+    links: ['Others'],
+  },
+  {
+    src: 'images/chaitest.png',
+    alt: 'Chai Test',
+    name: 'Chai Test',
+    type: 'Library',
+    links: ['Others'],
+  },
 ];
 
 const distinctColors = [
