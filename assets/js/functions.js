@@ -630,4 +630,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     pdf_preview_object.innerHTML = "";
     pdf_preview_object.className = "";
   }
+
+  const skillSearch = (searchTerm) => {
+    return searchTerm;
+  }
 });
