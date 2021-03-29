@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setTimeout(() => {
           skillDiv.innerHTML = `<div class="popup" style="${style}">
           <img src="${skillObj.src}" class="popup_skill_img"/>
-          <div class="popup_title">Used In ${inProjects.length} Project${inProjects.length>1?'s':''}</div>
+          <div class="popup_title">Used In ${inProjects.length} Project${inProjects.length > 1 ? 's' : ''}</div>
           <div class="popup_projs_div">
             ${inProjects.map(prj => MiniProjectDisplay(prj)).join("")
             }
@@ -372,21 +372,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const skill_search_input = document.getElementById('skill_search_input');
     const clear_skill_search = document.getElementById('clear_skill_search');
     skill_search_input.addEventListener('input', e => {
-      console.log('input', e.target.value);
       const searchValue = e.target.value;
-      showOnlyMatching(searchValue);
+      showOnlyType(skillType, searchValue);
+    });
+    skill_search_input.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        skill_search_input.value = '';
+        // showOnlyMatching('');
+        showOnlyType(skillType);
+      }
     });
     clear_skill_search.addEventListener('click', e => {
       skill_search_input.value = '';
-      showOnlyMatching('');
+      // showOnlyMatching();
+      showOnlyType(skillType);
     });
   }
-  function showOnlyType(type) {
+  function showOnlyType(type, search) {
     const articles = document.querySelectorAll('.article_skill');
     articles.forEach(a => {
+      const classList = Array.from(a.classList).join(' ').toLowerCase();
       if ((type === 'all') || (a.classList.contains(type))) {
-        a.classList.add('shown_block');
-        a.classList.remove('hidden');
+        if (!search || (classList.includes(search.toLowerCase()))) {
+          a.classList.add('shown_block');
+          a.classList.remove('hidden');
+        } else {
+          a.classList.add('hidden');
+          a.classList.remove('shown_block');
+        }
       } else {
         a.classList.add('hidden');
         a.classList.remove('shown_block');
