@@ -373,15 +373,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const clear_skill_search = document.getElementById('clear_skill_search');
     skill_search_input.addEventListener('input', e => {
       console.log('input', e.target.value);
+      const searchValue = e.target.value;
+      showOnlyMatching(searchValue);
     });
     clear_skill_search.addEventListener('click', e => {
-      skill_search_input.value = "";
+      skill_search_input.value = '';
+      showOnlyMatching('');
     });
   }
   function showOnlyType(type) {
     const articles = document.querySelectorAll('.article_skill');
     articles.forEach(a => {
       if ((type === 'all') || (a.classList.contains(type))) {
+        a.classList.add('shown_block');
+        a.classList.remove('hidden');
+      } else {
+        a.classList.add('hidden');
+        a.classList.remove('shown_block');
+      }
+    });
+  }
+  function showOnlyMatching(search) {
+    const articles = document.querySelectorAll('.article_skill');
+    articles.forEach(a => {
+      const classList = Array.from(a.classList).join(' ').toLowerCase();
+      if ((search === '') || (classList.includes(search.toLowerCase()))) {
         a.classList.add('shown_block');
         a.classList.remove('hidden');
       } else {
