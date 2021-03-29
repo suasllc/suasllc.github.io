@@ -250,7 +250,7 @@
 } */
 .skill_search_box{
   /* visibility: hidden; */
-  display: none;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -261,6 +261,7 @@
   /* width: 400px; */
   /* height: 50px; */
   background-color: rebeccapurple;
+  border-bottom: none !important;
 }
 .search-icon-class {
   font-size: 3.5vh;
@@ -298,12 +299,12 @@
 .main-search-bar {
   height: 32px;
   border-radius: 50px;
-  width: 100%;
+  /* width: 100%; */
   border: none;
   font-size: 14px;
   background-color: rgb(240, 240, 249);
-  padding-left: 40px;
-  width: 200px;
+  /* padding-left: 40px; */
+  /* width: 200px; */
   -webkit-transition: width 0.6s ease-in-out;
   transition: width 0.6s ease-in-out;
 }
