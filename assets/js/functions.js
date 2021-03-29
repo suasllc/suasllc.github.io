@@ -350,6 +350,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
           skill_tabs[index].classList.add('next_to_active_left');
       });
     };
+    const skill_search_input = document.getElementById('skill_search_input');
+    const clear_skill_search = document.getElementById('clear_skill_search');
 
     types.forEach(type => {
       const skill_tab = document.getElementById(`${type}_skills`);
@@ -357,6 +359,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         showOnlyType(type);
         handleExpandCollapse();
         makeOnlyOneTabActive(type);
+        skill_search_input.value = '';
         skillType = type;
         if (graphMode) showGraph(skillType);
       });
@@ -366,11 +369,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       showOnlyType('all');
       handleExpandCollapse();
       makeOnlyOneTabActive('all');
+      skill_search_input.value = '';
       skillType = 'all';
       if (graphMode) showGraph('all');
     });
-    const skill_search_input = document.getElementById('skill_search_input');
-    const clear_skill_search = document.getElementById('clear_skill_search');
     skill_search_input.addEventListener('input', e => {
       const searchValue = e.target.value;
       showOnlyType(skillType, searchValue);
@@ -378,13 +380,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     skill_search_input.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         skill_search_input.value = '';
-        // showOnlyMatching('');
         showOnlyType(skillType);
       }
     });
     clear_skill_search.addEventListener('click', e => {
       skill_search_input.value = '';
-      // showOnlyMatching();
       showOnlyType(skillType);
     });
   }
@@ -406,20 +406,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
     });
   }
-  function showOnlyMatching(search) {
-    const articles = document.querySelectorAll('.article_skill');
-    articles.forEach(a => {
-      const classList = Array.from(a.classList).join(' ').toLowerCase();
-      if ((search === '') || (classList.includes(search.toLowerCase()))) {
-        a.classList.add('shown_block');
-        a.classList.remove('hidden');
-      } else {
-        a.classList.add('hidden');
-        a.classList.remove('shown_block');
-      }
-    });
-  }
-
   // const listView = document.getElementById('skill_tab_list');
   // const graphView = document.getElementById('skill_tab_graph');
   // let inListView = true;
