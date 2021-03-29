@@ -369,7 +369,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
       skillType = 'all';
       if (graphMode) showGraph('all');
     });
-
+    const skill_search_input = document.getElementById('skill_search_input');
+    const clear_skill_search = document.getElementById('clear_skill_search');
+    skill_search_input.addEventListener('input', e => {
+      console.log('input', e.target.value);
+    });
+    clear_skill_search.addEventListener('click', e => {
+      skill_search_input.value = "";
+    });
   }
   function showOnlyType(type) {
     const articles = document.querySelectorAll('.article_skill');
