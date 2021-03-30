@@ -328,9 +328,19 @@
   width: 450px;
 }
 
+.contact_form_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
 .contact_form{
   max-width: 700px;
   min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   display: none;
 }
 
