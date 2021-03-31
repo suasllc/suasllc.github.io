@@ -6,6 +6,9 @@ export default function contactMe() {
   const message_body = document.getElementById('message_body');
   const submit_contact_button = document.getElementById('submit_contact_button');
   const result_text = document.getElementById('result_text');
+  const contact_form_confirm_modal = document.getElementById('contact_form_confirm_modal');
+  const contact_reset_yes = document.getElementById('contact_reset_yes');
+  const contact_reset_no = document.getElementById('contact_reset_no');
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -45,13 +48,7 @@ export default function contactMe() {
   });
 
   contact_reset.addEventListener('click', e => {
-    const res = confirm("Are sure you want to resent the form?");
-    if (res) {
-      contact_name.value = "";
-      contact_email.value = "";
-      message_body.value = "";
-      enableDisableContactButtons();
-    }
+    contact_form_confirm_modal.classList.remove('hidden');
   });
 
   function enableDisableSubmitButton() {
@@ -75,4 +72,18 @@ export default function contactMe() {
   message_body.addEventListener('input', e => {
     enableDisableContactButtons();
   });
+  contact_reset_no.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    contact_form_confirm_modal.classList.add('hidden');
+  })
+  contact_reset_yes.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    contact_name.value = "";
+    contact_email.value = "";
+    message_body.value = "";
+    enableDisableContactButtons();
+    contact_form_confirm_modal.classList.add('hidden');
+  })
 }
