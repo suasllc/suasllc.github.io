@@ -48,6 +48,7 @@ export default function contactMe() {
   });
 
   contact_reset.addEventListener('click', e => {
+    e.preventDefault();
     contact_form_confirm_modal.classList.remove('hidden');
   });
 
