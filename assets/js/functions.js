@@ -4,6 +4,7 @@ import {
   getProjectNodes, addSkillsToProjects,
 } from './skilldata.js';
 import { getAcrobatInfo } from './acrobatinfo.js';
+import contactMe from './contactform.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   let graphMode = false;
@@ -656,4 +657,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const skillSearch = (searchTerm) => {
     return searchTerm;
   }
+
+  contactMe();
+
 });
