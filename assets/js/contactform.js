@@ -5,6 +5,7 @@ export default function contactMe() {
   const contact_email = document.getElementById('contact_email');
   const message_body = document.getElementById('message_body');
   const submit_contact_button = document.getElementById('submit_contact_button');
+  const result_text = document.getElementById('result_text');
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -26,12 +27,19 @@ export default function contactMe() {
         return res.json();
       })
       .then(res => {
-        document.getElementById("result-text").innerText =
-          "Email sent successfully! I will respond soon. Thank you!"
+        result_text.style = 'color: green;';
+        result_text.innerText = "Email sent successfully! I will respond soon. Thank you!"
+        contact_name.value = "";
+        contact_email.value = "";
+        message_body.value = "";
+        enableDisableContactButtons();
       })
       .catch(e => {
-        document.getElementById("result-text").innerText =
-          "An unknown error occured. Please try again!"
+        result_text.style = 'color: red;';
+        result_text.innerText = "An unknown error occured. Please try again!"
+      })
+      .finally(() => {
+        setTimeout(() => result_text.innerText = "", 3000);
       })
 
   });
