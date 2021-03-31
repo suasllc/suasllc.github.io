@@ -38,31 +38,33 @@ export default function contactMe() {
 
   contact_reset.addEventListener('click', e => {
     const res = confirm("Are sure you want to resent the form?");
-    if(res){
+    if (res) {
       contact_name.value = "";
       contact_email.value = "";
       message_body.value = "";
+      enableDisableContactButtons();
     }
   });
 
-  function enableDisableSubmitButton(){
-    if(contact_name.value && contact_email.value && message_body.value) submit_contact_button.disabled = false;
+  function enableDisableSubmitButton() {
+    if (contact_name.value && contact_email.value && message_body.value) submit_contact_button.disabled = false;
     else submit_contact_button.disabled = true;
   }
-  function enableDisableResetButton(){
-    if(contact_name.value || contact_email.value || message_body.value) contact_reset.disabled = false;
+  function enableDisableResetButton() {
+    if (contact_name.value || contact_email.value || message_body.value) contact_reset.disabled = false;
     else contact_reset.disabled = true;
   }
-  contact_name.addEventListener('input', e => {
+  function enableDisableContactButtons() {
     enableDisableSubmitButton();
     enableDisableResetButton();
+  }
+  contact_name.addEventListener('input', e => {
+    enableDisableContactButtons();
   });
   contact_email.addEventListener('input', e => {
-    enableDisableSubmitButton();
-    enableDisableResetButton();
+    enableDisableContactButtons();
   });
   message_body.addEventListener('input', e => {
-    enableDisableSubmitButton();
-    enableDisableResetButton();
+    enableDisableContactButtons();
   });
 }
