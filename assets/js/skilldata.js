@@ -169,10 +169,31 @@ export const skillObjs = [
   },
   {
     src: 'images/aws.png',
-    alt: 'AWS S3',
-    name: 'AWS_S3',
+    alt: 'Amazon AWS S3',
+    name: 'Amazon_AWS_S3',
     type: 'Service',
     links: ['Tripcamp', 'Dronest', 'Instavibes'],
+  },
+  {
+    src: 'images/amazonses.png',
+    alt: 'Amazon AWS SES',
+    name: 'Amazon_AWS_SES',
+    type: 'Service',
+    links: ['TonyNgo.me'],
+  },
+  {
+    src: 'images/AWSLambda.png',
+    alt: 'Amazon AWS Lambda',
+    name: 'Amazon_AWS_Lambda',
+    type: 'Service',
+    links: ['TonyNgo.me'],
+  },
+  {
+    src: 'images/amazonapigateway.png',
+    alt: 'Amazon AWS API Gateway',
+    name: 'Amazon_AWS_API_Gateway',
+    type: 'Service',
+    links: ['TonyNgo.me'],
   },
   {
     src: 'images/docker.png',

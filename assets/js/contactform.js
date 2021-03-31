@@ -1,4 +1,5 @@
 export default function contactMe() {
+  //https://www.freecodecamp.org/news/how-to-receive-emails-via-your-sites-contact-us-form-with-aws-ses-lambda-api-gateway/
   const form = document.getElementById('contact_me_form');
   const contact_reset = document.getElementById('contact_reset');
   const contact_name = document.getElementById('contact_name');
